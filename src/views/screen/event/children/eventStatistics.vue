@@ -78,11 +78,10 @@ export default {
             show: false
           },
           data: [
-            { value: 1048, name: 'Search Engine' },
-            { value: 735, name: 'Direct' },
-            { value: 580, name: 'Email' },
-            { value: 484, name: 'Union Ads' },
-            { value: 300, name: 'Video Ads' }
+            { value: 8, name: '水压超限' },
+            { value: 18, name: '渗透压过高' },
+            { value: 36, name: '流速超限' },
+            { value: 72, name: '水位超限' }
           ]
         }
       ]
@@ -97,9 +96,9 @@ export default {
 </script>
 <style lang="scss">
 .event-statistics {
-  -webkit-box-flex: 348;
-  -ms-flex: 348;
-  flex: 348;
+  -webkit-box-flex: 200;
+  -ms-flex: 200;
+  flex: 200;
 }
 
 .over {
