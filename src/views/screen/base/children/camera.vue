@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="camera-con">
     <el-card class="camera-card">
       <div slot="header" class="camera-card-header">
         <div class="bt-camera">
@@ -7,7 +7,7 @@
             <img data-v-24cea621="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgBvZLJDoJADIZbwJXN5Yl8Po8mJj6ad0+amLg7ojMO9CcRAp4m9PJNKJ1+6ZS3yhiyoTIqIjPC5wfUQm8gXITM1BAeOYrgpuRwuAnvb+EVPL+Ew+j/Re6Mjui8f8CgZnLC7OI+dWR0QMfdHSZZlRdwNqaOjPaqanSpmVxBAs1rs8qpyUtyMgeJW6NPKIdeKhxho40ufxBG87LEn4iJLxWujbgtYdR6mVNzEMMkhUkilUKDvLsZtSU09yYwwetw2mRi81E3RnY/pjhhJkH5ShHMChryw26MbMdZDrvBMQxjGIW/JvbDyKnRFy7/SRGLlf+8AAAAAElFTkSuQmCC" class="camera-card-header-icon">摄像头图像</div>
         </div>
       </div>
-      <div style="height: 200px;">
+      <div style="height: 280px;">
         <div class="camera camera1">
           <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
         </div>
@@ -69,6 +69,12 @@ export default {
 }
 </script>
 <style lang="scss">
+.camera-con {
+  -webkit-box-flex: 300 !important;
+  -ms-flex: 300 !important;
+  flex: 300 !important;
+  display: flex;
+}
 .camera-dialog {
   margin-top: 10px;
   background: url("~@/assets/images/bg3.png") rgba(0 32 80 / 9%) 50% no-repeat;

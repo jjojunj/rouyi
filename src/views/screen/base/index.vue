@@ -70,15 +70,14 @@ export default {
 }
 
 .screen-content-bottom {
-  width: 25%;
+  width: 28%;
   margin-right: 10px;
+  padding-top: 35px;
   background-image: url("~@/assets/images/rectangle.png");
   background-size: 100% 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 212px;
   position: absolute;
   bottom: 10px;
   -webkit-box-shadow: inset 0 0.841837px 42.0918px rgb(1 194 255 / 25%);

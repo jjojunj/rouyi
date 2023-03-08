@@ -19,12 +19,12 @@
       </el-table-column>
       <el-table-column
         prop="status"
-        label="警告状态">
+        label="告警状态">
       </el-table-column>
       <el-table-column
         prop="date"
         width="150"
-        label="管理时间">
+        label="告警时间">
       </el-table-column>
     </el-table>
   </el-card>
