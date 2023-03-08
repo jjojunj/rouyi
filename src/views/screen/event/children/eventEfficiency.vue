@@ -65,10 +65,6 @@ export default {
       textStyle: {
         color: "#FFF"
       },
-      grid: {
-        bottom: 20,
-        top: 50
-      },
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -77,12 +73,11 @@ export default {
       yAxis: {
         type: 'value',
         axisLabel: {
-          formatter: '{value} °C'
+          formatter: '{value}'
         }
       },
       series: [
         {
-          name: '逐月',
           type: 'line',
           data: [10, 11, 13, 11, 12],
           markPoint: {
