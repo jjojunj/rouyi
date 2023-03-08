@@ -205,8 +205,8 @@ export default {
 }
 
 .event-list {
-  -webkit-box-flex: 590;
-  -ms-flex: 590;
-  flex: 590;
+  -webkit-box-flex: 590 !important;
+  -ms-flex: 590 !important;
+  flex: 590 !important;
 }
 </style>

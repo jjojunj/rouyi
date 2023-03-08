@@ -96,9 +96,9 @@ export default {
 </script>
 <style lang="scss">
 .event-statistics {
-  -webkit-box-flex: 200;
-  -ms-flex: 200;
-  flex: 200;
+  -webkit-box-flex: 348 !important;
+  -ms-flex: 348 !important;
+  flex: 348 !important;
 }
 
 .over {
