@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card">
+  <el-card class="camera-card" style="flex: fit-content">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">

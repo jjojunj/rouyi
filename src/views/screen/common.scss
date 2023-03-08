@@ -24,6 +24,11 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  .el-table__cell {
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Microsoft YaHei';
+  }
 }
 .screen-content-center {
   width: 25%;
@@ -45,7 +50,11 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-
+  .el-table__cell {
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Microsoft YaHei';
+  }
 }
 
 

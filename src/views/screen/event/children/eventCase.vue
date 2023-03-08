@@ -22,6 +22,7 @@
       <el-table
         :data="tableData"
         height="200"
+        size="mini"
         class="equipment-table"
         ref="tableRef"
         style="width: 100%">

@@ -38,6 +38,7 @@
       <el-table
         :data="tableData"
         height="300"
+        size="mini"
         class="equipment-table event-table"
         ref="tableRef"
         style="width: 100%">
