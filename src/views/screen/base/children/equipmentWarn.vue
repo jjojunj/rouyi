@@ -15,10 +15,11 @@
       <el-table-column
         prop="name"
         label="设备名称"
-        width="100">
+        width="120">
       </el-table-column>
       <el-table-column
         prop="status"
+        width="120"
         label="告警状态">
       </el-table-column>
       <el-table-column
@@ -38,27 +39,27 @@ export default {
     return {
       tableData: [
         {
-          date: '23-02-19 18:00',
+          date: '2023-02-19 18:00',
           name: '单昆流速计',
           status: '二级警告'
         },
         {
-          date: '23-02-05 18:00',
+          date: '2023-02-05 18:00',
           name: '双昆流速计',
           status: '二级警告'
         },
         {
-          date: '23-01-22 18:00',
+          date: '2023-01-22 18:00',
           name: '北堤流速计',
           status: '二级警告'
         },
         {
-          date: '23-01-15 18:00',
+          date: '2023-01-15 18:00',
           name: '单昆流速计',
           status: '二级警告'
         },
         {
-          date: '23-01-15 18:00',
+          date: '2023-01-15 18:00',
           name: '单昆流速计',
           status: '二级警告'
         },

@@ -30,12 +30,12 @@
       <el-table-column
         prop="scale"
         label="规模"
-        width="60">
+        width="100">
       </el-table-column>
       <el-table-column
         prop="num"
         label="孔数"
-        width="60">
+        width="100">
       </el-table-column>
       <el-table-column
         prop="max"
