@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card">
+  <el-card class="camera-card event-trend">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">
@@ -21,7 +21,6 @@
     <div style="height: 200px;">
       <el-table
         :data="tableData"
-        height="200"
         size="mini"
         class="equipment-table"
         ref="tableRef"
@@ -85,7 +84,21 @@ export default {
           average: '2min',
           average2: '122min'
         },
-
+        {
+          no: '20230303',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230302',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230301',
+          average: '2min',
+          average2: '122min'
+        },
       ]
     }
   },
@@ -103,3 +116,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.event-trend {
+  -webkit-box-flex: 590 !important;
+  -ms-flex: 590 !important;
+  flex: 590 !important;
+}
+</style>

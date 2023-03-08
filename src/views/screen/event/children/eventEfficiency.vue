@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card">
+  <el-card class="camera-card event-eff">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">
@@ -102,3 +102,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.event-eff {
+  -webkit-box-flex: 348 !important;
+  -ms-flex: 348 !important;
+  flex: 348 !important;
+}
+</style>

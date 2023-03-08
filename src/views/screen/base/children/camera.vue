@@ -8,10 +8,18 @@
         </div>
       </div>
       <div style="height: 200px;">
-        <div class="camera camera1" @click="dialogVisible = true">1</div>
-        <div class="camera camera2">1</div>
-        <div class="camera camera3">1</div>
-        <div class="camera camera4">1</div>
+        <div class="camera camera1">
+          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+        </div>
+        <div class="camera camera2">
+          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+        </div>
+        <div class="camera camera3">
+          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+        </div>
+        <div class="camera camera4">
+          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+        </div>
       </div>
     </el-card>
     <el-dialog
@@ -47,7 +55,10 @@ export default {
   name: "camera",
   data() {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      vedios: [
+
+      ]
     };
   },
   methods: {
