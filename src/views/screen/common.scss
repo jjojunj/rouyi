@@ -48,9 +48,13 @@
 
 }
 
+
+
 .camera-popper {
   color: #fff;
   background: #002558;
+  border: 1px solid #7bbdff;
+
   .el-select-dropdown__empty {
     background: #002558;
     border: 1px solid #7bbdff;
@@ -58,6 +62,10 @@
   }
   .el-select-dropdown__item {
     color: #fff;
+    padding: 0px 20px;
+    font-size: 12px;
+    line-height: 25px;
+    height: 25px;
   }
   .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
     background: rgba(1,194,255,.1);
@@ -84,6 +92,11 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+
+  .el-input__inner {
+    height: 20px;
+    line-height: 20px;
+  }
   .camera-card-header-left {
     width: 100%;
     font-family: 'Microsoft YaHei';
@@ -91,6 +104,7 @@
     font-weight: 700;
     font-size: 20px;
   }
+
   .over,.unover {
     display: inline-block;
     float: left;
