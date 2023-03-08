@@ -1,0 +1,133 @@
+<template>
+  <div>
+    <el-card class="camera-card">
+      <div slot="header" class="camera-card-header">
+        <div class="bt-camera">
+          <div class="camera-card-header-left">
+            <img data-v-24cea621="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgBvZLJDoJADIZbwJXN5Yl8Po8mJj6ad0+amLg7ojMO9CcRAp4m9PJNKJ1+6ZS3yhiyoTIqIjPC5wfUQm8gXITM1BAeOYrgpuRwuAnvb+EVPL+Ew+j/Re6Mjui8f8CgZnLC7OI+dWR0QMfdHSZZlRdwNqaOjPaqanSpmVxBAs1rs8qpyUtyMgeJW6NPKIdeKhxho40ufxBG87LEn4iJLxWujbgtYdR6mVNzEMMkhUkilUKDvLsZtSU09yYwwetw2mRi81E3RnY/pjhhJkH5ShHMChryw26MbMdZDrvBMQxjGIW/JvbDyKnRFy7/SRGLlf+8AAAAAElFTkSuQmCC" class="camera-card-header-icon">摄像头图像</div>
+        </div>
+      </div>
+      <div style="height: 200px;">
+        <div class="camera camera1" @click="dialogVisible = true">1</div>
+        <div class="camera camera2">1</div>
+        <div class="camera camera3">1</div>
+        <div class="camera camera4">1</div>
+      </div>
+    </el-card>
+    <el-dialog
+      title="摄像头图像"
+      :modal="false"
+      :visible.sync="dialogVisible"
+      width="50%"
+      custom-class="camera-dialog"
+      :before-close="handleClose">
+      <div class="left">
+        <img src="~@/assets/images/bg4.png">
+      </div>
+      <div class="right">
+        <dl>
+          <dt>视频选择</dt>
+          <dd>1.盟建水闸-左</dd>
+          <dd>2.双昆水闸-西侧门</dd>
+          <dd>3.北堤水闸-大门</dd>
+          <dd>4.盟建水闸-闸门</dd>
+          <dd>5.双昆水闸-右</dd>
+        </dl>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button class="close-btn" @click="dialogVisible = false">关闭</el-button>
+      </span>
+    </el-dialog>
+  </div>
+
+</template>
+
+<script>
+export default {
+  name: "camera",
+  data() {
+    return {
+      dialogVisible: false
+    };
+  },
+  methods: {
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
+    }
+  }
+}
+</script>
+<style lang="scss">
+.camera-dialog {
+  margin-top: 10px;
+  background: url("~@/assets/images/bg3.png") rgba(0 32 80 / 9%) 50% no-repeat;
+  background-size: 100% 100%;
+  -webkit-box-shadow: inset 0 0.841837px 42.0918px rgb(1 194 255 / 25%);
+  box-shadow: inset 0 0.841837px 42.0918px rgb(1 194 255 / 25%);
+  border: 0;
+  border-radius: 0;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #fff;
+  padding: 7px;
+  .el-dialog__header {
+    padding: 10px;
+    padding-bottom: 10px;
+    background: rgba(0,138,255,.3);
+    .el-dialog__title {
+      color: #fff;
+    }
+    .el-dialog__headerbtn {
+      top: 20px;
+      .el-dialog__close {
+        color: #fff;
+      }
+    }
+  }
+  .left {
+    width: 660px;
+    height: 360px;
+    display: inline-block;
+    float: left;
+  }
+  .right {
+    width: calc(100% - 660px);
+    height: 360px;
+    display: inline-block;
+    float: left;
+    dl {
+      border-bottom: 1px solid rgba(73,90,123,.5);
+      padding: 0px 10px;
+      color: #fff;
+      dt {
+        background: rgba(0,138,255,.3);
+        height: 30px;
+        line-height: 30px;
+        padding-left: 5px;
+        font-weight: bold;
+      }
+      dd {
+        padding: 10px 0px;
+      }
+    }
+
+  }
+
+  .close-btn {
+    padding: 6px 40px;
+    color: #fff;
+    background: transparent;
+    border-color: #7BBDFF;
+  }
+}
+</style>
