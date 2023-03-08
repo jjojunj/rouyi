@@ -70,6 +70,7 @@ export default {
 }
 
 .screen-content-bottom {
+  width: 25%;
   margin-right: 10px;
   background-image: url("~@/assets/images/rectangle.png");
   background-size: 100% 100%;
@@ -85,11 +86,40 @@ export default {
   border-radius: 106px;
 
   .container {
-    padding: 30px 80px 0px;
     color: #fff;
     font-weight: bold;
     font-size: 15px;
+    display: flex;
+    font-weight: bold;
+    font-size: 15px;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: flex-end;
+    align-items: stretch;
+    flex-wrap: wrap;
     .row {
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-wrap: wrap;
+      flex-wrap: nowrap;
+      -ms-flex-line-pack: end;
+      align-content: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: center;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      text-align: center;
+      margin-bottom: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      .cell {
+        margin: 0px 20px;
+      }
       .title {
         font-size: 20px;
       }

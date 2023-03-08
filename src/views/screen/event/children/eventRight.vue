@@ -2,7 +2,6 @@
   <div class="screen-content-right">
     <event-efficiency/>
     <event-trend/>
-    <event-case/>
   </div>
 </template>
 <script>

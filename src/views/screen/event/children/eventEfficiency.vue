@@ -4,7 +4,7 @@
       <div class="bt-camera">
         <div class="camera-card-header-left">
           <img data-v-24cea621="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgBvZLJDoJADIZbwJXN5Yl8Po8mJj6ad0+amLg7ojMO9CcRAp4m9PJNKJ1+6ZS3yhiyoTIqIjPC5wfUQm8gXITM1BAeOYrgpuRwuAnvb+EVPL+Ew+j/Re6Mjui8f8CgZnLC7OI+dWR0QMfdHSZZlRdwNqaOjPaqanSpmVxBAs1rs8qpyUtyMgeJW6NPKIdeKhxho40ufxBG87LEn4iJLxWujbgtYdR6mVNzEMMkhUkilUKDvLsZtSU09yYwwetw2mRi81E3RnY/pjhhJkH5ShHMChryw26MbMdZDrvBMQxjGIW/JvbDyKnRFy7/SRGLlf+8AAAAAElFTkSuQmCC" class="camera-card-header-icon">
-          <span>处置效率分析</span>
+          <span>事件趋势分析</span>
 <!--          <div class="condition">
             <el-select v-model="value" size="mini" popper-class="camera-popper" placeholder="请选择">
               <el-option
@@ -89,35 +89,6 @@ export default {
             data: [
               { type: 'max', name: 'Max' },
               { type: 'min', name: 'Min' }
-            ]
-          }
-        },
-        {
-          name: '逐年',
-          type: 'line',
-          data: [1, -2, 2, 5, 3],
-          markPoint: {
-            data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
-          },
-          markLine: {
-            data: [
-              { type: 'average', name: 'Avg' },
-              [
-                {
-                  symbol: 'none',
-                  x: '90%',
-                  yAxis: 'max'
-                },
-                {
-                  symbol: 'circle',
-                  label: {
-                    position: 'start',
-                    formatter: 'Max'
-                  },
-                  type: 'max',
-                  name: '最高点'
-                }
-              ]
             ]
           }
         }
