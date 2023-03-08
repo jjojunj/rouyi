@@ -72,7 +72,7 @@ export default {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['2022-03', '2022-06', '2022-09', '2022-12', '2023-03']
       },
       yAxis: {
         type: 'value',
@@ -84,21 +84,18 @@ export default {
         {
           name: '逐月',
           type: 'line',
-          data: [10, 11, 13, 11, 12, 12, 9],
+          data: [10, 11, 13, 11, 12],
           markPoint: {
             data: [
               { type: 'max', name: 'Max' },
               { type: 'min', name: 'Min' }
             ]
-          },
-          markLine: {
-            data: [{ type: 'average', name: 'Avg' }]
           }
         },
         {
           name: '逐年',
           type: 'line',
-          data: [1, -2, 2, 5, 3, 2, 0],
+          data: [1, -2, 2, 5, 3],
           markPoint: {
             data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
           },

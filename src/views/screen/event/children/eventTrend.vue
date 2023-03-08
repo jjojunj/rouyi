@@ -27,18 +27,18 @@
         ref="tableRef"
         style="width: 100%">
         <el-table-column
-          prop="date"
-          label="日期"
-          width="180">
+          prop="no"
+          label="编号"
+          width="100">
         </el-table-column>
         <el-table-column
-          prop="name"
-          label="姓名"
-          width="180">
+          prop="average"
+          label="平均响应时效"
+          width="100">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="地址">
+          prop="average2"
+          label="平均处理时效">
         </el-table-column>
       </el-table>
     </div>
@@ -59,35 +59,34 @@ export default {
           label: '选项2'
         }
       ],
-      tableData: [{
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-08',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-06',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-07',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }]
+      tableData: [
+        {
+          no: '20230305',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230304',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230303',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230302',
+          average: '2min',
+          average2: '122min'
+        },
+        {
+          no: '20230301',
+          average: '2min',
+          average2: '122min'
+        },
+
+      ]
     }
   },
   mounted() {
