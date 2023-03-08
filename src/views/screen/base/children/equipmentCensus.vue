@@ -23,14 +23,14 @@
       <div class="container">
         <el-row :gutter="20" class="row">
           <el-col :span="6"><div class="grid-content bg-purple" @click="onClickItem(123)"><div class="title">总数</div><div><span class="num">219</span><span>个</span></div></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">在线</div><div><span class="num">219</span><span>个</span></div></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">离线</div><div><span class="num">219</span><span>个</span></div></div></el-col>
-          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">在线率</div><div><span class="num">219</span><span>个</span></div></div></el-col>
+          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">在线</div><div><span class="num">209</span><span>个</span></div></div></el-col>
+          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">离线</div><div><span class="num">10</span><span>个</span></div></div></el-col>
+          <el-col :span="6"><div class="grid-content bg-purple"><div class="title">在线率</div><div><span class="num">100%</span><span>个</span></div></div></el-col>
         </el-row>
         <el-row :gutter="20" class="row">
           <el-col :span="8"><div class="grid-content bg-purple"><div class="title">设备类型</div><div><span class="num">219</span><span>个</span></div></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple"><div class="title">设备数量</div><div><span class="num">219</span><span>个</span></div></div></el-col>
-          <el-col :span="8"><div class="grid-content bg-purple"><div class="title">在线数</div><div><span class="num">219</span><span>个</span></div></div></el-col>
+          <el-col :span="8"><div class="grid-content bg-purple"><div class="title">设备数量</div><div><span class="num">209</span><span>个</span></div></div></el-col>
+          <el-col :span="8"><div class="grid-content bg-purple"><div class="title">在线数</div><div><span class="num">10</span><span>个</span></div></div></el-col>
         </el-row>
       </div>
 
