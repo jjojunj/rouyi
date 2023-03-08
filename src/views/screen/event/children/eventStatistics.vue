@@ -33,17 +33,22 @@ export default {
 
     const option = {
       title: {
+        text: "144个",
+        x: "20%",
+        y: "center",
         textStyle: {
-          color: "#FFFFFF"
-        }
+          fontWeight: "normal",
+          color: "#FFFFFF",
+          fontSize: "20",
+        },
       },
       tooltip: {
         trigger: 'item'
       },
       legend: {
         orient: 'vertical',
-        right: 10,
-        top: 20,
+        right: "10%",
+        top: "20%",
         bottom: 20,
         textStyle: {
           color: "#fff"
