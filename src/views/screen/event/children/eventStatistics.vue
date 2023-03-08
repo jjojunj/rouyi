@@ -10,7 +10,7 @@
     </div>
     <div style="height: 250px;">
       <div style="height: 36px;">
-        <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">2</span>起</div>
+        <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">144</span>起</div>
         <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">0</span>起</div>
       </div>
       <div class="statis-title" style="height: 15px;text-align: right">
@@ -40,7 +40,8 @@ export default {
           fontWeight: "normal",
           color: "#FFFFFF",
           fontSize: "20",
-        },
+        }
+
       },
       tooltip: {
         trigger: 'item'
@@ -72,21 +73,15 @@ export default {
             show: false,
             position: 'center'
           },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: 20,
-              fontWeight: 'bold'
-            }
-          },
+
           labelLine: {
             show: false
           },
           data: [
-            { value: 8, name: '水压超限' },
-            { value: 18, name: '渗透压过高' },
-            { value: 36, name: '流速超限' },
-            { value: 72, name: '水位超限' }
+            { value: 8, name: '水压超限8' },
+            { value: 18, name: '渗透压过高18' },
+            { value: 36, name: '流速超限36' },
+            { value: 72, name: '水位超限72' }
           ]
         }
       ]
