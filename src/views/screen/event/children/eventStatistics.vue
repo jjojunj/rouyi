@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card" style="flex: fit-content">
+  <el-card class="camera-card event-statistics">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">
@@ -96,6 +96,12 @@ export default {
 }
 </script>
 <style lang="scss">
+.event-statistics {
+  -webkit-box-flex: 348;
+  -ms-flex: 348;
+  flex: 348;
+}
+
 .over {
   background-image: url("~@/assets/images/border2.png");
 }

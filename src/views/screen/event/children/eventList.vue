@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card">
+  <el-card class="camera-card event-list">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">
@@ -118,5 +118,11 @@ export default {
 <style lang="scss">
 .event-table {
   margin-top: 10px;
+}
+
+.event-list {
+  -webkit-box-flex: 590;
+  -ms-flex: 590;
+  flex: 590;
 }
 </style>
