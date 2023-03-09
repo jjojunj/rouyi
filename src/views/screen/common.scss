@@ -17,6 +17,10 @@
   .el-card__body {
     height: 100%;
   }
+
+  input::-webkit-input-placeholder {
+    color: #fff;
+  }
 }
 .screen-content-left{
   width: 21%;
