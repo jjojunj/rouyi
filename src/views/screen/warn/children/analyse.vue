@@ -42,7 +42,7 @@ export default {
       },
       grid: {
         bottom: "20%",
-        top: "10%"
+        top: "20%"
       },
       textStyle: {
         color: "#FFF"
