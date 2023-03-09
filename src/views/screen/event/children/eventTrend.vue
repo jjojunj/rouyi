@@ -18,12 +18,13 @@
         </div>
       </div>
     </div>
-    <div style="height: 200px;">
+    <div style="height: 100%;">
       <el-table
         :data="tableData"
         size="mini"
         class="equipment-table"
         ref="tableRef"
+        height="90%"
         style="width: 100%">
         <el-table-column
           prop="no"

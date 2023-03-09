@@ -64,7 +64,7 @@
       <div style="height: 100%; width: 100%">
         <el-table
           :data="tableData"
-          height="300vh"
+          height="85%"
           size="mini"
           class="equipment-table event-table"
           ref="tableRef"

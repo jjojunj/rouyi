@@ -21,7 +21,7 @@
     <div style="height: 200px;">
       <el-table
         :data="tableData"
-        height="200"
+        height="60%"
         size="mini"
         class="equipment-table"
         ref="tableRef"
