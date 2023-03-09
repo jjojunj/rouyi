@@ -28,12 +28,12 @@
         <el-table-column
           prop="no"
           label="编号"
-          width="120">
+          min-width="60%">
         </el-table-column>
         <el-table-column
           prop="average"
           label="平均响应时效"
-          width="120">
+          min-width="60%">
         </el-table-column>
         <el-table-column
           prop="average2"

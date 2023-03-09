@@ -61,34 +61,36 @@
           </el-col>
         </el-row>
       </el-form>
-      <el-table
-        :data="tableData"
-        height="300vh"
-        size="mini"
-        class="equipment-table event-table"
-        ref="tableRef"
-        style="width: 100vw">
-        <el-table-column
-          prop="type"
-          label="事件类型"
-          width="80vw">
-        </el-table-column>
-        <el-table-column
-          prop="level"
-          label="级别"
-          width="60vw">
-        </el-table-column>
-        <el-table-column
-          prop="date"
-          width="120vw"
-          label="时间">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          width="100vw"
-          label="地址">
-        </el-table-column>
-      </el-table>
+      <div style="height: 100%; width: 100%">
+        <el-table
+          :data="tableData"
+          height="300vh"
+          size="mini"
+          class="equipment-table event-table"
+          ref="tableRef"
+          style="width: 100%">
+          <el-table-column
+            prop="type"
+            label="事件类型"
+            min-width="40%">
+          </el-table-column>
+          <el-table-column
+            prop="level"
+            label="级别"
+            min-width="40%">
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            min-width="50%"
+            label="时间">
+          </el-table-column>
+          <el-table-column
+            prop="address"
+            label="地址">
+          </el-table-column>
+        </el-table>
+      </div>
+
     </div>
   </el-card>
 </template>
