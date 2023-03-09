@@ -8,8 +8,8 @@
         </div>
       </div>
     </div>
-    <div style="height: 250px;">
-      <div style="height: 200px" id="analyse"></div>
+    <div style="height: 100%;">
+      <div style="height: 100%" id="analyse"></div>
     </div>
   </el-card>
 </template>
@@ -41,8 +41,8 @@ export default {
         }
       },
       grid: {
-        bottom: 20,
-        top: 50
+        bottom: "20%",
+        top: "10%"
       },
       textStyle: {
         color: "#FFF"

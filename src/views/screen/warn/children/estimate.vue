@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 200px;">
+    <div style="height: 100%">
       <el-table
         :data="tableData"
         height="200"

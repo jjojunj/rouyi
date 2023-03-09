@@ -15,16 +15,15 @@
       <el-table-column
         prop="name"
         label="设备名称"
-        width="100">
+        min-width="50%">
       </el-table-column>
       <el-table-column
         prop="status"
-        width="100"
+        min-width="50%"
         label="告警状态">
       </el-table-column>
       <el-table-column
         prop="date"
-        width="150"
         label="告警时间">
       </el-table-column>
     </el-table>

@@ -25,17 +25,17 @@
       <el-table-column
         prop="name"
         label="名称"
-        width="100">
+        min-width="40%">
       </el-table-column>
       <el-table-column
         prop="scale"
         label="规模"
-        width="80">
+        min-width="40%">
       </el-table-column>
       <el-table-column
         prop="num"
         label="孔数"
-        width="80">
+        min-width="40%">
       </el-table-column>
       <el-table-column
         prop="max"

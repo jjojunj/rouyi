@@ -8,8 +8,8 @@
         </div>
       </div>
     </div>
-    <div style="height: 250px;">
-      <div style="height: 200px" id="present"></div>
+    <div style="height: 100%">
+      <div style="height: 100%" id="present"></div>
     </div>
   </el-card>
 </template>
