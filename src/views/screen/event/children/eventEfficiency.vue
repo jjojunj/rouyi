@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div id="eventEff" style="height: 200px;">
+    <div id="eventEff" style="height: 100%;">
     </div>
   </el-card>
 </template>
@@ -58,8 +58,8 @@ export default {
         trigger: 'axis'
       },
       grid: {
-        bottom: 20,
-        top: 50
+        bottom: "10%",
+        top: "10%"
       },
       legend: {
         textStyle: {

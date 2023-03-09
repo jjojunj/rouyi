@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 250px;">
+    <div style="height: 100%;">
       <div style="height: 36px;">
         <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">144</span>起</div>
         <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">0</span>起</div>
@@ -16,7 +16,7 @@
       <div class="statis-title" style="height: 15px;text-align: right">
         <span class="statis-title-hover">事件类型</span>｜<span>事件级别</span>｜<span>事件状态</span>
       </div>
-      <div style="height: 200px" id="eventStatis"></div>
+      <div style="height: 80%" id="eventStatis"></div>
     </div>
   </el-card>
 </template>
@@ -50,7 +50,7 @@ export default {
         orient: 'vertical',
         right: "10%",
         top: "20%",
-        bottom: 20,
+        bottom: "1%",
         textStyle: {
           color: "#fff"
         }
@@ -59,8 +59,8 @@ export default {
         color: "#FFF"
       },
       grid: {
-        bottom: 20,
-        top: 50
+        bottom: "1%",
+        top: "50%"
       },
       series: [
         {
