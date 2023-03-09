@@ -1,6 +1,6 @@
 .screen-container {
   position: relative;
-  padding: 80px 24px 48px;
+  padding: 10px 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,9 +28,8 @@
   -ms-flex-direction: column;
   flex-direction: column;
   .el-table__cell {
-    font-size: 0.9rem;
+    font-size: 16px;
     font-weight: bold;
-    font-family: 'Microsoft YaHei';
   }
 }
 .screen-content-center {
