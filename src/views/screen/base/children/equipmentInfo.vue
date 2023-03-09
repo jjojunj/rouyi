@@ -25,7 +25,7 @@
       <el-table-column
         prop="name"
         label="名称"
-        min-width="40%">
+        min-width="60%">
       </el-table-column>
       <el-table-column
         prop="scale"
