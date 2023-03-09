@@ -18,7 +18,7 @@
     </div>
     <el-table
       :data="tableData"
-      height="200"
+      height="80%"
       class="equipment-table"
       ref="tableRef"
       style="width: 100%">
