@@ -118,6 +118,10 @@
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .over,.unover {
@@ -156,7 +160,7 @@
   }
 
   .camera {
-    height: 50%;
+    height: 36%;
     width: 49.9%;
     display: inline-block;
     float: left;
