@@ -463,18 +463,71 @@
       border-bottom: 1px solid rgba(73,90,123,.5);
       padding: 0px 10px;
       color: #fff;
+      height: 100%;
       dt {
         background: rgba(0,138,255,.3);
-        height: 30px;
-        line-height: 30px;
+        height: 40px;
+        line-height: 40px;
         padding-left: 5px;
         font-weight: bold;
+        margin-bottom: 5px;
       }
       dd {
-        padding: 10px 0px;
+        padding: 10px 20px;
+        margin: 0px;
+      }
+      .hover {
+        background: rgba(0,138,255,.3);
       }
     }
-
+    dl>div{
+      height: 80%;
+      overflow-x: hidden;
+    }
+    /* 1,滚动条 */
+    ::-webkit-scrollbar {
+      width: 5px;          /* 纵向滚动条 宽度 */
+      height: 5px;         /* 横向滚动条 高度 */
+      background: #0089ff57;   /* 整体背景 */
+      border-radius: 10px;  /* 整体 圆角 */
+    }
+    /* 2,滚动条两端的按钮 */
+    ::-webkit-scrollbar-button{
+      width: 5px;          /* 横向滚动条 宽度 */
+      height: 5px;          /* 纵向滚动条 高度 */
+      background: #0089ff57;
+      border-radius: 10px;
+    }
+    /* 3,外层轨道 */
+    ::-webkit-scrollbar-track {
+      /* background: red; */
+      border-radius: 10px;
+    }
+    /* 4.内层轨道，它会覆盖外层轨道的样式。 */
+    ::-webkit-scrollbar-track-piece {
+      width: 5px;
+      background-color: #0089ff57;
+      margin: 0 -2px 0;
+    }
+    /* 5,滑块 */
+    ::-webkit-scrollbar-thumb {
+      background: #63b9f1;
+      min-height: 50px;
+      min-width: 50px;
+      border-radius: 10px;
+    }
+    /* 纵向滑块悬浮 */
+    ::-webkit-scrollbar-thumb:vertical:hover {
+      background: #0089ff57;
+    }
+    /* 横向滑块悬浮 */
+    ::-webkit-scrollbar-thumb:horizontal:hover {
+      background: #0089ff57
+    }
+    /* 6,边角，两个滚动条交汇处 */
+    ::-webkit-scrollbar-corner{
+      background: #0089ff57;
+    }
   }
 
   .close-btn {

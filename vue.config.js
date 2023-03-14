@@ -40,6 +40,13 @@ module.exports = {
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
+      },
+      [process.env.VUE_APP_CAMERA_API]: {
+        target: `http://192.168.31.212:30909`,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_CAMERA_API]: ''
+        }
       }
     },
     disableHostCheck: true

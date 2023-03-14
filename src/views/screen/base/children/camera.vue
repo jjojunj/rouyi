@@ -8,17 +8,33 @@
         </div>
       </div>
       <div style="height: 90%">
-        <div class="camera camera1">
-          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+        <div class="camera camera1" @click="onClickRightCamare">
+          <video id="video1"
+                 width="100%"
+                 height="100%"
+                 ref="videoElement"
+                 controls autoplay ></video>
         </div>
         <div class="camera camera2">
-          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+          <video id="video2"
+                 width="100%"
+                 height="100%"
+                 ref="videoElement"
+                 controls autoplay ></video>
         </div>
         <div class="camera camera3">
-          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+          <video id="video3"
+                 width="100%"
+                 height="100%"
+                 ref="videoElement"
+                 controls autoplay ></video>
         </div>
         <div class="camera camera4">
-          <img src="~@/assets/images/zm1.jpg" height="100%" width="100%">
+          <video id="video4"
+                 width="100%"
+                 height="100%"
+                 ref="videoElement"
+                 controls autoplay ></video>
         </div>
       </div>
     </el-card>
@@ -30,16 +46,21 @@
       custom-class="camera-dialog"
       :before-close="handleClose">
       <div class="left">
-        <img src="~@/assets/images/bg4.png">
+        <video id="video"
+               width="100%"
+               height="100%"
+               ref="videoElement"
+               controls autoplay ></video>
       </div>
       <div class="right">
         <dl>
           <dt>视频选择</dt>
-          <dd>1.盟建水闸-左</dd>
-          <dd>2.双昆水闸-西侧门</dd>
-          <dd>3.北堤水闸-大门</dd>
-          <dd>4.盟建水闸-闸门</dd>
-          <dd>5.双昆水闸-右</dd>
+          <div style="overflow: auto">
+            <dd v-for="(mp,index) in mpids" :id="mp.mpId" @click="createdPlay(mp)" :class="{'hover': (index === 0)}">
+              {{index+1}}.{{mp.mpName}}
+            </dd>
+          </div>
+
         </dl>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -51,26 +72,123 @@
 </template>
 
 <script>
-/*import {userLogin} from "@/api/screen.api";*/
+import {groupList, mpList, refreshToken, userLogin, videoConnect} from "@/api/screen.api";
+import flvjs from "clipboard";
 
 export default {
   name: "camera",
   data() {
     return {
       dialogVisible: false,
-      vedios: [
+      selectCamera: {mpId: ""},
+      groups: [],
+      mpids: [],
+      player: {},
+      player1: {},
+      player2: {},
+      player3: {},
+      player4: {},
 
-      ]
     };
   },
   mounted() {
-    /*userLogin().then(res => {
-      debugger
-    })*/
+    userLogin().then(res => {
+      this.onOneRefreshToken()
+    })
   },
   methods: {
     handleClose(done) {
       done();
+    },
+    onClickRightCamare() {
+      this.dialogVisible = true
+    },
+    onOneRefreshToken () {
+      refreshToken().then(res => {
+        groupList().then(res => {
+          this.groups = res.data.list;
+          if (this.groups.length > 0) {
+            this.groups.forEach((group, _index) => {
+              mpList({groupId: group.groupId}).then(res => {
+                res.data.list.map(mp => {
+                  this.mpids.push(mp);
+                })
+                if (_index === 0) {
+                  this.onVideoConnect();
+                }
+              })
+            });
+
+          }
+        })
+        setTimeout(this.onRefreshToken, 60*1000);
+      })
+    },
+    onVideoConnect() {
+      const mpids = this.mpids;
+      let num = 4;
+      if (mpids.length < num) {
+        num = mpids.length;
+      }
+      this.selectCamera = mpids[0];
+      for (let i = 0; i < num; i++) {
+        videoConnect({mpId: mpids[i].mpId, videoType: "flv"}).then(res => {
+          const player = this.createdPlayList("video" + (i+1), res.data.url);
+          if (i === 0) {
+            this.player1 = player;
+          } else if (i === 1) {
+            this.player2 = player;
+          } else if (i === 2) {
+            this.player3 = player;
+          } else if (i === 3) {
+            this.player4 = player;
+          }
+        })
+      }
+
+      this.createdPlay(this.selectCamera);
+    },
+    createdPlayList(elementId, url) {
+      if (flvjs.isSupported()) {
+        const videoDom = document.getElementById(elementId)
+        // 创建一个播放器实例
+        const player = flvjs.createPlayer({
+            type: 'flv', // 媒体类型，默认是 flv,
+            isLive: true, // 是否是直播流
+            hasAudio: true, // 是否有音频
+            hanVideo: true, // 是否有视频
+            url: url,
+        })
+        player.attachMediaElement(videoDom);
+        player.load()
+        player.play()
+        return player;
+      }
+    },
+    createdPlay(mp) {
+      this.selectCamera = mp;
+      videoConnect({mpId: mp.mpId, videoType: "flv"}).then(res => {
+        if (flvjs.isSupported()) {
+          const videoDom = document.getElementById(mp.mpId)
+          // 创建一个播放器实例
+          const player = flvjs.createPlayer({
+            type: 'flv', // 媒体类型，默认是 flv,
+            isLive: true, // 是否是直播流
+            hasAudio: true, // 是否有音频
+            hanVideo: true, // 是否有视频
+            url: res.data.url,
+          })
+          player.attachMediaElement(videoDom);
+          player.load()
+          player.play()
+          this.player = player;
+        }
+      })
+    },
+    onRefreshToken () {
+      refreshToken().then(res => {
+        setTimeout(this.onRefreshToken, 1000*60)
+      })
     }
   }
 }

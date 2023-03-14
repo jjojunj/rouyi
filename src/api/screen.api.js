@@ -1,4 +1,4 @@
-import request from "@/utils/request";
+import request from "@/utils/cameraRequest";
 
 export function userLogin() {
   return request({
@@ -14,7 +14,9 @@ export function refreshToken() {
   })
 }
 
-
+/**
+ * @returns {groupId,parentID,groupName}
+ */
 export function groupList() {
   return request({
     url: '/seawall/video/groupList',
@@ -58,7 +60,7 @@ export function videoStop(data) {
 }
 
 /**
- * @param data {mpId}
+ * @param data {{mpId: *}}
  * @returns {url}
  */
 export function videoConnect(data) {
