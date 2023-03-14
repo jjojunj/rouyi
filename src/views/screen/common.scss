@@ -14,13 +14,6 @@
   flex: 1;
   overflow: hidden;
   background: url("~@/assets/images/bg5.png");
-  .el-card__body {
-    height: 100%;
-  }
-
-  input::-webkit-input-placeholder {
-    color: #fff;
-  }
 }
 .screen-content-left{
   width: 21%;
@@ -56,24 +49,23 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  .el-table__cell {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .camera-con {
-    height: 0;
-    display: flex;
-    flex: 1;
-  }
+
 }
 
+.camera-con {
+  height: 0;
+  display: flex;
+  flex: 1;
+}
 
 
 .camera-popper {
   color: #fff;
   background: #002558;
   border: 1px solid #7bbdff;
-
+  .el-picker-panel__icon-btn,.el-date-picker__header-label,.el-date-table th {
+    color: #fff;
+  }
   .el-select-dropdown__empty {
     background: #002558;
     border: 1px solid #7bbdff;
@@ -110,8 +102,21 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  .el-table__cell {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .el-card__body {
+    height: 100%;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #fff;
+  }
 
   .el-input__inner {
+    color:#fff;
     height: 20px;
     line-height: 20px;
   }
