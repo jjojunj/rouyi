@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {userLogin} from "@/api/screen.api";
+/*import {userLogin} from "@/api/screen.api";*/
 
 export default {
   name: "camera",
@@ -64,9 +64,9 @@ export default {
     };
   },
   mounted() {
-    userLogin().then(res => {
+    /*userLogin().then(res => {
       debugger
-    })
+    })*/
   },
   methods: {
     handleClose(done) {
