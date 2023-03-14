@@ -11,28 +11,28 @@
         <div class="camera camera1" @click="onClickRightCamare">
           <video id="video1"
                  width="100%"
-                 height="100%"
+                 height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
         <div class="camera camera2">
           <video id="video2"
                  width="100%"
-                 height="100%"
+                 height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
         <div class="camera camera3">
           <video id="video3"
                  width="100%"
-                 height="100%"
+                 height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
         <div class="camera camera4">
           <video id="video4"
                  width="100%"
-                 height="100%"
+                 height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
@@ -151,7 +151,6 @@ export default {
     createdPlayList(elementId, url) {
       if (flvjs.isSupported()) {
         const videoDom = document.getElementById(elementId)
-        // 创建一个播放器实例
         const player = flvjs.createPlayer({
             type: 'flv', // 媒体类型，默认是 flv,
             isLive: true, // 是否是直播流
@@ -170,7 +169,6 @@ export default {
       videoConnect({mpId: mp.mpId, videoType: "flv"}).then(res => {
         if (flvjs.isSupported()) {
           const videoDom = document.getElementById(mp.mpId)
-          // 创建一个播放器实例
           const player = flvjs.createPlayer({
             type: 'flv', // 媒体类型，默认是 flv,
             isLive: true, // 是否是直播流
