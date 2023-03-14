@@ -56,7 +56,7 @@
         <dl>
           <dt>视频选择</dt>
           <div style="overflow: auto">
-            <dd v-for="(mp,index) in mpids" :id="mp.mpId" @click="createdPlay(mp)" :class="{'hover': (index === 0)}">
+            <dd v-for="(mp,index) in mpids" :id="mp.mpId" @click="createdPlay(mp)" :class="{'hover': (mp === selectCamera)}">
               {{index+1}}.{{mp.mpName}}
             </dd>
           </div>
