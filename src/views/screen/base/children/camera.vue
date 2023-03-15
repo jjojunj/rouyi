@@ -73,7 +73,7 @@
 
 <script>
 import {groupList, mpList, refreshToken, userLogin, videoConnect} from "@/api/screen.api";
-import flvjs from "clipboard";
+import flvjs from "flv.js";
 
 export default {
   name: "camera",
