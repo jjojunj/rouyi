@@ -131,7 +131,7 @@
     font-size: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -152,9 +152,8 @@
   }
 
   .condition {
-    display: inline-block;
-    width: 90px;
-    float: right;
+    display: flex;
+    width: 50%;
     .el-input__inner {
       color: #fff;
     }
