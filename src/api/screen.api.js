@@ -149,4 +149,11 @@ export function selectEquStatistics (data) {
   })
 }
 
+export function selectEquEmergency (data) {
+  return request({
+    url: '/seawall/inter/selectEquEmergency',
+    method: 'post',
+    data: data
+  })
+}
 

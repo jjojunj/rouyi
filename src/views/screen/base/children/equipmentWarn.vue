@@ -17,7 +17,7 @@
       ref="tableRef"
       style="width: 100%">
       <el-table-column
-        prop="name"
+        prop="deviceName"
         label="设备名称"
         min-width="50%">
       </el-table-column>
@@ -25,9 +25,12 @@
         prop="status"
         min-width="50%"
         label="设备状态">
+        <template slot-scope="scope">
+         {{scope.row.tag === 'online'?'离线': '在线'}}
+        </template>
       </el-table-column>
       <el-table-column
-        prop="date"
+        prop="policeTime"
         label="告警时间">
       </el-table-column>
     </el-table>
@@ -36,38 +39,13 @@
 </template>
 
 <script>
+import {selectEquEmergency} from "@/api/screen.api";
+
 export default {
   name: "equipmentWarn",
   data() {
     return {
-      tableData: [
-        {
-          date: '2023-02-19 18:00',
-          name: '单昆流速计',
-          status: '二级警告'
-        },
-        {
-          date: '2023-02-05 18:00',
-          name: '双昆流速计',
-          status: '二级警告'
-        },
-        {
-          date: '2023-01-22 18:00',
-          name: '北堤流速计',
-          status: '二级警告'
-        },
-        {
-          date: '2023-01-15 18:00',
-          name: '单昆流速计',
-          status: '二级警告'
-        },
-        {
-          date: '2023-01-15 18:00',
-          name: '单昆流速计',
-          status: '二级警告'
-        },
-
-      ]
+      tableData: []
     }
   },
   mounted() {
@@ -79,6 +57,10 @@ export default {
         divData.scrollTop = 0;
       }
     }, 200);
+
+    selectEquEmergency({}).then(res => {
+      this.tableData = res.data;
+    })
   },
 }
 </script>
