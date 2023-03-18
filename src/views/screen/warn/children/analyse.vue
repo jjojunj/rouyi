@@ -29,7 +29,9 @@ export default {
       title: {
         text: '分数',
         textStyle: {
-          color: "#FFFFFF"
+          color: "#FFFFFF",
+          fontWeight: 100,
+          fontSize: 15
         }
       },
       tooltip: {

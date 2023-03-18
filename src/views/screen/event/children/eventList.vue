@@ -71,8 +71,8 @@
           style="width: 100%">
           <el-table-column
             prop="type"
-            label="事件类型"
-            min-width="40%">
+            label="事件"
+            min-width="60%">
           </el-table-column>
           <el-table-column
             prop="level"
@@ -86,7 +86,7 @@
           </el-table-column>
           <el-table-column
             prop="address"
-            label="地址">
+            label="状态">
           </el-table-column>
         </el-table>
       </div>

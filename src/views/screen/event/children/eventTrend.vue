@@ -27,18 +27,18 @@
         height="90%"
         style="width: 100%">
         <el-table-column
-          prop="no"
-          label="编号"
+          prop="event"
+          label="事件"
           min-width="60%">
         </el-table-column>
         <el-table-column
           prop="average"
-          label="平均响应时效"
+          label="响应时间"
           min-width="60%">
         </el-table-column>
         <el-table-column
           prop="average2"
-          label="平均处理时效">
+          label="处理时效">
         </el-table-column>
       </el-table>
     </div>
@@ -61,42 +61,37 @@ export default {
       ],
       tableData: [
         {
-          no: '20230305',
+          event: '20230305',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230304',
+          event: '20230304',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230303',
+          event: '20230303',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230302',
+          event: '20230302',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230301',
+          event: '20230301',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230303',
+          event: '20230303',
           average: '2min',
           average2: '122min'
         },
         {
-          no: '20230302',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          no: '20230301',
+          event: '20230302',
           average: '2min',
           average2: '122min'
         },
