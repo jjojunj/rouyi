@@ -23,167 +23,156 @@ export default {
 
     const myChart = this.$echarts.init(document.getElementById('present'))
 
-    const center1= ['50%', '65%']
-    const data1='1200'
-    const data2='1800'
-    const Dvalue = ((data1/data2)*100).toFixed(2)
+    const getmax = 100;
 
-    const startAngle=180
-    const endAngle=0
-    const min= 0
-    const max=100
-    const radius="125%"
-    const pointer={ show:false}
-    const axisLabel= {
-      distance: 5,
-      color: '#fff',
-      fontSize: 18,
-      formatter: function (value) {
-        return value + '%';
-      }
-    }
+    const getvalue = 13;
 
-    const axisTick = {
-      distance: -5,
-      splitNumber: 5,
-      length: 6,
-      lineStyle: {
-        color: '#fff'
-      }
-    }
-    const splitLine={
-      distance: -65,
-      length: 8,
-      lineStyle: {
-        width: 3,
-        color: '#fff'
-      }
-    }
-    const anchor= {show: false}
 
-    const axisLine={
-      lineStyle: {
-        width: 20,
-        color: [
-          [1, '#fff']
-        ]
-      }
-    }
-    const textStyle={
-      textAlign:'center',
-      fontSize: 14,
-      lineHeight:20,
-      color: '#fff',
-      rich:{
-        a:{
-          color:'#fff',
-          fontSize:20,
-          fontWeight:'bold',
-          lineHeight:14
-        }
-      }
-    }
 
-    const title={
-      show: true,
-      offsetCenter: [0, '30%'],
-      fontSize: 18
-    }
-    const detail= {
-      valueAnimation: true,
-      fontSize: 14,
-      lineHeight: 20 ,
-      color:'#fff',
-      offsetCenter: [0, '25%'],
-      fontWeight:'bold',
-      formatter: function (value) {
-        return '风险现状评估\n80分';
-      },
-      rich: {
-        a: {
-          color:'#333',
-          fontSize:10,
-          lineHeight:10
-        }
-      }
-    }
     const option = {
-      title:[{
-        text: '水压\n100kpa',
-        left: '5%',
-        top: '67%',
-        textStyle: textStyle
+
+      backgroundColor: '#fff0',
+      title: [{
+        text: '综合风险评估',
+        bottom: '5%',
+        x: 'center',
+        textStyle: {
+          fontWeight: 'bold',
+          fontSize: 15,
+          fontFamily: 'MiSans-Bold',
+          color: '#fff'
+        }
+      }],
+      angleAxis: {
+        show: false,
+        max: getmax * 360 / 180, //-45度到225度，二者偏移值是270度除360度
+        type: 'value',
+        startAngle: 180, //极坐标初始角度
+        splitLine: {
+          show: false
+        }
       },
-        {
-          text: '渗透压\n100kpa',
-          right: '5%',
-          top: '67%',
-          textStyle: textStyle
+      barMaxWidth: 20, //圆环宽度
+      radiusAxis: {
+        show: false,
+        type: 'category',
+      },
+      //圆环位置和大小
+      polar: {
+        center: ['50%', '65%'],
+        radius: '220%'
+      },
+
+      series: [{
+        type: 'bar',
+        data: [{ //上层圆环，显示数据
+          value: getvalue,
+          itemStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                {
+                  offset: 0,
+                  color: 'rgba(39, 223, 152, 1)',
+                },
+
+                {
+                  offset: 1,
+                  color: 'rgba(139, 255, 215, 1)',
+                },
+              ],
+            },
+
+          },
         }],
-      series: [
+        barGap: '-100%', //柱间距离,上下两层圆环重合
+        coordinateSystem: 'polar',
+        roundCap: true, //顶端圆角
+        z: 3 //圆环层级，同zindex
+      },
+        { //下层圆环，显示最大值
+          type: 'bar',
+          data: [{
+            value: getmax,
+            itemStyle: {
+              color: '#fff',
+              opacity: 0.2,
+              borderWidth: 0,
+            },
+          }],
+          barGap: '-100%',
+          coordinateSystem: 'polar',
+          roundCap: true,
+          z: 1
+        },
+        //仪表盘
         {
           type: 'gauge',
-          startAngle: startAngle,
-          center:center1,
-          endAngle: endAngle,
-          min: min,
-          max: max,
-          radius:radius,
-          splitNumber: 4,
-          progress:{
-            show: true,
-            width: 20,
-            itemStyle: {
-              color: "#1492FF"
-            }
+          startAngle: 180, //起始角度，同极坐标
+          endAngle: 0, //终止角度，同极坐标
+          axisLine: {
+            show: false,
           },
-          //pointer: pointer,
-          axisLine:axisLine,
-          //axisTick: axisTick,
-          splitLine:splitLine,
-          //axisLabel: axisLabel,
-          //anchor: anchor,
-          title: title,
-          detail: detail,
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            show: false
+          },
+          splitLabel: {
+            show: false
+          },
+          pointer: {
+            icon: 'circle', // 箭头图标
+            length: '82%',
+            width: 0,
+            height: 0,
+            offsetCenter: [0, '-88%'], // 箭头位置
+          },
+
+          detail: {
+            // show: false,
+
+            formatter: function (params) {
+              return '{a|风险现状统计}\n{b|'+ params + '分}';
+            },
+            color: '#4AEAAE',
+            fontSize: 20,
+            offsetCenter: [0, 10],
+            rich: {
+              a: {
+                color: "#fff",
+                lineHeight: 65,
+                fontSize: 15,
+                fontWeight: 550,
+              },
+              b: {
+                color: "#62dbdb",
+                fontSize: 32,
+                fontWeight: 550,
+                padding: [10, 0, 10, 0],
+              }
+            },
+          },
+          title: {
+            show: false
+          },
           data: [{
-            value: Dvalue,
-            name:''
+            value: getvalue,
           }]
 
         },
-        {
-          type: 'gauge',
-          startAngle: startAngle,
-          center:center1,
-          endAngle: endAngle,
-          min: min,
-          max: 100,
-          radius:radius,
-          splitNumber: 5,
-          /*progress:{
-            show: false,
-            width: 10,
-            itemStyle: {
-              color: "#fff"
-            }
-          },*/
-          pointer: {show:false},
-          axisLine:{show:false},
-          axisTick: {show:false},
-          splitLine:{show:false},
-          axisLabel: {show:false},
-          anchor: {show:false},
-          title: {show:false},
-          detail: {show:false},
-          data: [{
-            value: 100,
-            name:''
-          }]
 
-        }
       ]
+
     };
-    // 使用刚指定的配置项和数据显示图表。
 
     myChart.setOption(option)
 
