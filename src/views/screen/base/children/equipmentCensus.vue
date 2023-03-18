@@ -1,6 +1,6 @@
 <template>
   <div>
-    <screen-section :show="visible" @onHiddenAlter="onHiddenAlter"/>
+    <screen-section :show="visible" :section="section" v-show="visible" @onHiddenAlter="onHiddenAlter"/>
     <div class="screen-content-bottom">
 
       <div class="container">
@@ -33,11 +33,13 @@ export default {
   components: {ScreenSection},
   data() {
     return {
-      visible: false
+      visible: false,
+      section: ""
     };
   },
   methods: {
     onClickItem(data) {
+      this.section = "65599d0419bb456681a0a8091de50b65"
       this.visible = true;
     },
     onHiddenAlter() {

@@ -117,4 +117,20 @@ export function ptzControl(data) {
   })
 }
 
+export function selectSectionVal (data) {
+  return request({
+    url: '/seawall/inter/selectSectionVal',
+    method: 'post',
+    data: data
+  })
+}
+
+export function selectEquipList (data) {
+  return request({
+    url: '/seawall/inter/selectEquipList',
+    method: 'post',
+    data: data
+  })
+}
+
 

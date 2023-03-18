@@ -84,6 +84,18 @@
   }
 }
 
+.sestion-list {
+  display: flex;
+}
+
+.sestion-list>div{
+  width: 50%;
+  box-sizing: border-box;
+  border: 1px solid rgba(73, 90, 123, 0.5);
+  padding: 10px;
+  color: #fff;
+}
+
 .camera-card {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -153,7 +165,6 @@
 
   .condition {
     display: flex;
-    width: 50%;
     .el-input__inner {
       color: #fff;
     }
@@ -320,11 +331,17 @@
   }
 
 }
-
+.section-altert {
+  z-index: 2003;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .screen-alter {
-  left: 40%;
-  top: 40%;
-  position: absolute;
+  position: fixed;
   .el-icon-close {
     cursor: pointer;
     margin-top: 10px;
