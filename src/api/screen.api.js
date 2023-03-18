@@ -193,3 +193,11 @@ export function selectEventByCondition (data) {
     data: data
   })
 }
+
+
+export function selectEventAnalyse () {
+  return request({
+    url: '/seawall/inter/selectEventAnalyse',
+    method: 'post',
+  })
+}

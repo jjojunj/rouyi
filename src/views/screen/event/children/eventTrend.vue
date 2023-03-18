@@ -30,17 +30,17 @@
         height="90%"
         style="width: 100%">
         <el-table-column
-          prop="event"
+          prop="eventType"
           label="事件"
-          min-width="60%">
+          min-width="160%">
         </el-table-column>
         <el-table-column
-          prop="average"
+          prop="respondTime"
           label="响应时间"
-          min-width="60%">
+          min-width="70%">
         </el-table-column>
         <el-table-column
-          prop="average2"
+          prop="handleTime"
           label="处理时效">
         </el-table-column>
       </el-table>
@@ -48,6 +48,8 @@
   </el-card>
 </template>
 <script>
+import {selectEventAnalyse} from "@/api/screen.api";
+
 export default {
   name: "eventTrend",
   data() {
@@ -62,43 +64,7 @@ export default {
           label: '选项2'
         }
       ],
-      tableData: [
-        {
-          event: '20230305',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230304',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230303',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230302',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230301',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230303',
-          average: '2min',
-          average2: '122min'
-        },
-        {
-          event: '20230302',
-          average: '2min',
-          average2: '122min'
-        },
-      ]
+      tableData: []
     }
   },
   mounted() {
@@ -110,6 +76,10 @@ export default {
         divData.scrollTop = 0;
       }
     }, 200);
+    selectEventAnalyse().then(res => {
+      this.tableData = res.data;
+    })
+
   },
   methods: {
   }
