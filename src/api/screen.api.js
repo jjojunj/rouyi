@@ -172,9 +172,9 @@ export function selectEventTotal () {
 }
 
 
-export function selectClassify () {
+export function selectClassify (type) {
   return request({
-    url: '/seawall/inter/selectClassify',
+    url: '/seawall/inter/selectClassify?type=' + type,
     method: 'post',
   })
 }

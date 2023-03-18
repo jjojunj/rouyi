@@ -12,87 +12,107 @@
     </div>
     <div style="height: 100%;">
       <div style="height: 36px;">
-        <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">144</span>起</div>
-        <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">0</span>起</div>
+        <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">{{ notFinished }}</span>起</div>
+        <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">{{ accomplish }}</span>起</div>
       </div>
       <div class="statis-title" style="height: 15px;text-align: right">
-        <span class="statis-title-hover">事件类型</span>｜<span>事件级别</span>｜<span>事件状态</span>
+        <span class="statis-title-hover" @click="type = 1">事件类型</span>｜<span @click="type = 2">事件级别</span>｜<span @click="type = 3">事件状态</span>
       </div>
       <div style="height: 80%" id="eventStatis"></div>
     </div>
   </el-card>
 </template>
 <script>
+import {selectClassify, selectEventTotal} from "@/api/screen.api";
+
 export default {
   name: "eventStatistics",
+  data() {
+    return {
+      notFinished: 0,
+      accomplish:0,
+      type: ""
+    }
+  },
   mounted(){
+    this.type = '1';
+    selectEventTotal().then(res => {
+      this.notFinished = res.data.notFinished;
+      this.accomplish = res.data.accomplish;
+    })
 
-    // 基于准备好的dom，初始化echarts实例
+  },
+  watch: {
+    type(newVal, oldVal) {
+      selectClassify(newVal).then(res => {
+        // 基于准备好的dom，初始化echarts实例
+        let total = 0;
+        const datas = [];
+        res.data.map(row => {
+          total += row.typeNum;
+          datas.push({value: row.typeNum, name: row.typeName + row.typeNum})
+        })
 
-    const myChart = this.$echarts.init(document.getElementById('eventStatis'))
+        const myChart = this.$echarts.init(document.getElementById('eventStatis'))
 
-    // 指定图表的配置项和数据
+        // 指定图表的配置项和数据
 
-    const option = {
-      title: {
-        text: "144个",
-        x: "20%",
-        y: "center",
-        textStyle: {
-          fontWeight: "normal",
-          color: "#FFFFFF",
-          fontSize: "20",
-        }
+        const option = {
+          title: {
+            text: total + "个",
+            x: "20%",
+            y: "center",
+            textStyle: {
+              fontWeight: "normal",
+              color: "#FFFFFF",
+              fontSize: "20",
+            }
 
-      },
-      tooltip: {
-        trigger: 'item'
-      },
-      legend: {
-        orient: 'vertical',
-        right: "10%",
-        top: "20%",
-        bottom: "1%",
-        textStyle: {
-          color: "#fff"
-        }
-      },
-      textStyle: {
-        color: "#FFF"
-      },
-      grid: {
-        bottom: "1%",
-        top: "50%"
-      },
-      series: [
-        {
-          name: 'Access From',
-          type: 'pie',
-          radius: ['40%', '70%'],
-          center: ['30%', '50%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: false,
-            position: 'center'
           },
-
-          labelLine: {
-            show: false
+          tooltip: {
+            trigger: 'item'
           },
-          data: [
-            { value: 8, name: '水压超限8' },
-            { value: 18, name: '渗透压过高18' },
-            { value: 36, name: '流速超限36' },
-            { value: 72, name: '水位超限72' }
+          legend: {
+            orient: 'vertical',
+            right: "0%",
+            top: "20%",
+            bottom: "1%",
+            textStyle: {
+              color: "#fff"
+            }
+          },
+          textStyle: {
+            color: "#FFF"
+          },
+          grid: {
+            bottom: "1%",
+            top: "50%"
+          },
+          series: [
+            {
+              name: 'Access From',
+              type: 'pie',
+              radius: ['40%', '70%'],
+              center: ['30%', '50%'],
+              avoidLabelOverlap: false,
+              label: {
+                show: false,
+                position: 'center'
+              },
+
+              labelLine: {
+                show: false
+              },
+              data: datas
+            }
           ]
-        }
-      ]
-    };
+        };
 
-    // 使用刚指定的配置项和数据显示图表。
+        // 使用刚指定的配置项和数据显示图表。
 
-    myChart.setOption(option)
-
+        myChart.setOption(option)
+      })
+    }
   }
 }
 </script>
