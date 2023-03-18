@@ -16,7 +16,7 @@
         <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">{{ accomplish }}</span>起</div>
       </div>
       <div class="statis-title" style="height: 15px;text-align: right">
-        <span class="statis-title-hover" @click="type = 1">事件类型</span>｜<span @click="type = 2">事件级别</span>｜<span @click="type = 3">事件状态</span>
+        <span :class="{'statis-title-hover': (type === 1)}" @click="type = 1">事件类型</span>｜<span :class="{'statis-title-hover': (type === 2)}" @click="type = 2">事件级别</span>｜<span :class="{'statis-title-hover': (type === 3)}" @click="type = 3">事件状态</span>
       </div>
       <div style="height: 80%" id="eventStatis"></div>
     </div>
@@ -60,7 +60,7 @@ export default {
         const option = {
           title: {
             text: total + "个",
-            x: "20%",
+            x: "25%",
             y: "center",
             textStyle: {
               fontWeight: "normal",
