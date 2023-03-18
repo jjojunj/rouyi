@@ -201,3 +201,10 @@ export function selectEventAnalyse () {
     method: 'post',
   })
 }
+
+export function dictType (dictType) {
+  return request({
+    url: '/seawall/inter/dictType?dictType=' + dictType,
+    method: 'post',
+  })
+}

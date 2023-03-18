@@ -16,7 +16,7 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="事件类型">
-              <el-select v-model="formLabelAlign.eventType" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventType" clearable @change="onSearch" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in types"
                   :key="item.value"
@@ -29,6 +29,8 @@
           <el-col :span="16">
             <el-form-item label="时间">
               <el-date-picker
+                @change="onSearch"
+                clearable
                 popper-class="camera-popper"
                 v-model="formLabelAlign.eventTime"
                 type="date"
@@ -40,7 +42,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="级别">
-              <el-select v-model="formLabelAlign.eventLevel" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventLevel" clearable @change="onSearch" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in levels"
                   :key="item.value"
@@ -52,7 +54,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="状态">
-              <el-select v-model="formLabelAlign.eventStatus" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventStatus" clearable @change="onSearch" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in status"
                   :key="item.value"
@@ -94,55 +96,15 @@
   </el-card>
 </template>
 <script>
-import {selectEventByCondition} from "@/api/screen.api";
+import {dictType, selectEventByCondition} from "@/api/screen.api";
 
 export default {
   name: "eventList",
   data() {
     return {
-      status: [
-        {
-          value: '已处理',
-          label: '已处理'
-        },
-        {
-          value: '待处理',
-          label: '待处理'
-        }
-      ],
-      levels: [
-        {
-          value: '一级',
-          label: '一级'
-        },
-        {
-          value: '二级',
-          label: '二级'
-        },
-        {
-          value: '三级',
-          label: '三级'
-        }
-      ],
-      types: [
-        {
-          value: '水压超限',
-          label: '水压超限'
-        },
-        {
-          value: '渗透压过高',
-          label: '渗透压过高'
-        },
-        {
-          value: '流速超限',
-          label: '流速超限'
-        },
-        {
-          value: '水位超限',
-          label: '水位超限'
-        },
-
-      ],
+      status: [],
+      levels: [],
+      types: [],
       formLabelAlign: {
         eventType: '',
         eventTime: '',
@@ -152,6 +114,29 @@ export default {
     };
   },
   mounted() {
+    dictType("eventType").then(res => {
+      const types = [];
+      res.data.map(row => {
+        types.push({label: row.dictLabel, value: row.dictValue})
+      })
+      this.types = types;
+
+    })
+    dictType("eventLevel").then(res => {
+      const levels = [];
+      res.data.map(row => {
+        levels.push({label: row.dictLabel, value: row.dictValue})
+      })
+      this.levels = levels;
+
+    })
+    dictType("eventStatus").then(res => {
+      const status = [];
+      res.data.map(row => {
+        status.push({label: row.dictLabel, value: row.dictValue})
+      })
+      this.status = status;
+    })
     const table = this.$refs.tableRef;
     const divData = table.bodyWrapper;
     setInterval(() => {
@@ -161,11 +146,14 @@ export default {
       }
     }, 200);
 
-    selectEventByCondition(this.formLabelAlign).then(res => {
-      this.tableData = res.data;
-    })
+    this.onSearch();
   },
   methods: {
+    onSearch: function () {
+      selectEventByCondition(this.formLabelAlign).then(res => {
+        this.tableData = res.data;
+      })
+    }
   }
 }
 </script>
