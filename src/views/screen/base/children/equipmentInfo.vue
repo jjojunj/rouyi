@@ -4,14 +4,7 @@
       <div class="bt-camera">
         <div class="camera-card-header-left">
           <img data-v-24cea621="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgBvZLJDoJADIZbwJXN5Yl8Po8mJj6ad0+amLg7ojMO9CcRAp4m9PJNKJ1+6ZS3yhiyoTIqIjPC5wfUQm8gXITM1BAeOYrgpuRwuAnvb+EVPL+Ew+j/Re6Mjui8f8CgZnLC7OI+dWR0QMfdHSZZlRdwNqaOjPaqanSpmVxBAs1rs8qpyUtyMgeJW6NPKIdeKhxho40ufxBG87LEn4iJLxWujbgtYdR6mVNzEMMkhUkilUKDvLsZtSU09yYwwetw2mRi81E3RnY/pjhhJkH5ShHMChryw26MbMdZDrvBMQxjGIW/JvbDyKnRFy7/SRGLlf+8AAAAAElFTkSuQmCC" class="camera-card-header-icon">
-          <span>断面详情</span>
-
-          <div class="info-condition">
-            <div class="info-cond-hover">水闸</div>
-            <div>河道</div>
-            <div>海塘</div>
-            <div>抢险</div>
-          </div>
+          <span>测点详情</span>
         </div>
 
       </div>
@@ -24,22 +17,18 @@
       style="width: 100%">
       <el-table-column
         prop="name"
-        label="名称"
+        label="断面名称"
+        min-width="40%">
+      </el-table-column>
+      <el-table-column
+        prop="name2"
+        label="测点名称"
         min-width="60%">
       </el-table-column>
       <el-table-column
-        prop="scale"
-        label="规模"
-        min-width="40%">
-      </el-table-column>
-      <el-table-column
         prop="num"
-        label="孔数"
+        label="测值"
         min-width="40%">
-      </el-table-column>
-      <el-table-column
-        prop="max"
-        label="最大流量">
       </el-table-column>
     </el-table>
   </el-card>
@@ -53,22 +42,19 @@ export default {
     return {
       tableData: [
         {
-          scale: '中型',
-          name: '盟建水闸',
+          name: '东面',
           num: '3个',
-          max: '1000m³/s'
+          name2: '盟建水闸'
         },
         {
-          scale: '大型',
-          name: '双昆水闸',
+          name: '西面',
           num: '2个',
-          max: '1000m³/s'
+          name2: '双昆水闸'
         },
         {
-          scale: '小型',
-          name: '北堤水闸',
+          name: '北面',
           num: '4个',
-          max: '1000m³/s'
+          name2: '北堤水闸'
         },
 
       ]
