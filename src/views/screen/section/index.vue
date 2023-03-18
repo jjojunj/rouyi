@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     onClose() {
-      this.$emit("onHiddenAlter")
+      this.$emit("onClose")
     },
     changeValue(value) {
       selectStaValue({equId: value}).then(res => {
