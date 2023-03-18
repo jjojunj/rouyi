@@ -141,6 +141,12 @@ export function selectStaValue (data) {
   })
 }
 
-
+export function selectEquStatistics (data) {
+  return request({
+    url: '/seawall/inter/selectEquStatistics',
+    method: 'post',
+    data: data
+  })
+}
 
 
