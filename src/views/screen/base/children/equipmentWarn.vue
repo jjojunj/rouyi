@@ -26,7 +26,7 @@
         min-width="50%"
         label="设备状态">
         <template slot-scope="scope">
-         {{scope.row.tag === 'online'?'离线': '在线'}}
+         {{scope.row.status === 'online'?'离线': '在线'}}
         </template>
       </el-table-column>
       <el-table-column

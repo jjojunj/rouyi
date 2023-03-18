@@ -28,7 +28,7 @@ export default {
 
     const getmax = 100;
 
-    const getvalue = 13;
+    const getvalue = 80;
 
 
 
@@ -102,8 +102,8 @@ export default {
           data: [{
             value: getmax,
             itemStyle: {
-              color: '#fff',
-              opacity: 0.2,
+              color: '#EE5A3C',
+              opacity: 1,
               borderWidth: 0,
             },
           }],

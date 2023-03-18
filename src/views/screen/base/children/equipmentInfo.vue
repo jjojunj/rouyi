@@ -18,17 +18,17 @@
       ref="tableRef"
       style="width: 100%">
       <el-table-column
-        prop="name"
+        prop="secName"
         label="断面名称"
         min-width="40%">
       </el-table-column>
       <el-table-column
-        prop="name2"
+        prop="staName"
         label="测点名称"
         min-width="60%">
       </el-table-column>
       <el-table-column
-        prop="num"
+        prop="meaValue"
         label="测值"
         min-width="40%">
       </el-table-column>
@@ -38,28 +38,13 @@
 </template>
 
 <script>
+import {selectStationList} from "@/api/screen.api";
+
 export default {
   name: "equipmentInfo",
   data() {
     return {
-      tableData: [
-        {
-          name: '东面',
-          num: '3个',
-          name2: '盟建水闸'
-        },
-        {
-          name: '西面',
-          num: '2个',
-          name2: '双昆水闸'
-        },
-        {
-          name: '北面',
-          num: '4个',
-          name2: '北堤水闸'
-        },
-
-      ]
+      tableData: []
     }
   },
   mounted() {
@@ -71,6 +56,9 @@ export default {
         divData.scrollTop = 0;
       }
     }, 200);
+    selectStationList().then(res => {
+      this.tableData = res.data;
+    })
   },
 }
 </script>

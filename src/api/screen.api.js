@@ -157,3 +157,24 @@ export function selectEquEmergency (data) {
   })
 }
 
+export function selectStationList () {
+  return request({
+    url: '/seawall/inter/selectStationList',
+    method: 'post',
+  })
+}
+
+export function selectEventTotal () {
+  return request({
+    url: '/seawall/inter/selectEventTotal',
+    method: 'post',
+  })
+}
+
+
+export function selectClassify () {
+  return request({
+    url: '/seawall/inter/selectClassify',
+    method: 'post',
+  })
+}
