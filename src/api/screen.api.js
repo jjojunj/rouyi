@@ -178,3 +178,18 @@ export function selectClassify (type) {
     method: 'post',
   })
 }
+
+export function selectEventTrend () {
+  return request({
+    url: '/seawall/inter/selectEventTrend',
+    method: 'post',
+  })
+}
+
+export function selectEventByCondition (data) {
+  return request({
+    url: '/seawall/inter/selectEventByCondition',
+    method: 'post',
+    data: data
+  })
+}

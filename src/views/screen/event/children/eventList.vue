@@ -16,7 +16,7 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="事件类型">
-              <el-select v-model="formLabelAlign.type" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventType" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in types"
                   :key="item.value"
@@ -30,7 +30,7 @@
             <el-form-item label="时间">
               <el-date-picker
                 popper-class="camera-popper"
-                v-model="formLabelAlign.date"
+                v-model="formLabelAlign.eventTime"
                 type="date"
                 placeholder="选择日期">
               </el-date-picker>
@@ -40,7 +40,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="级别">
-              <el-select v-model="formLabelAlign.level" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventLevel" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in levels"
                   :key="item.value"
@@ -52,7 +52,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="状态">
-              <el-select v-model="formLabelAlign.status" popper-class="camera-popper" placeholder="请选择">
+              <el-select v-model="formLabelAlign.eventStatus" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in status"
                   :key="item.value"
@@ -73,23 +73,19 @@
           ref="tableRef"
           style="width: 100%">
           <el-table-column
-            prop="type"
+            prop="deviceName"
             label="事件"
             min-width="60%">
           </el-table-column>
           <el-table-column
-            prop="level"
+            prop="eventLevel"
             label="级别"
-            min-width="40%">
+            min-width="20%">
           </el-table-column>
           <el-table-column
-            prop="date"
+            prop="eventTime"
             min-width="50%"
             label="时间">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="状态">
           </el-table-column>
         </el-table>
       </div>
@@ -98,6 +94,8 @@
   </el-card>
 </template>
 <script>
+import {selectEventByCondition} from "@/api/screen.api";
+
 export default {
   name: "eventList",
   data() {
@@ -146,48 +144,11 @@ export default {
 
       ],
       formLabelAlign: {
-        type: '',
-        date: '',
-        status: '',
-        level: ''
-      }, tableData: [
-        {
-          type: '水位超限',
-          level: '一级',
-          date: '2023-03-05',
-          address: '单昆水闸'
-        },
-        {
-          type: '水流超限',
-          level: '二级',
-          date: '2023-03-05',
-          address: '海思水闸'
-        },
-        {
-          type: '水位超限',
-          level: '一级',
-          date: '2023-03-05',
-          address: '北坦江水闸'
-        },
-        {
-          type: '水位超限',
-          level: '三级',
-          date: '2023-03-05',
-          address: '孟建水闸'
-        },
-        {
-          type: '水位超限',
-          level: '三级',
-          date: '2023-03-05',
-          address: '孟建水闸'
-        },
-        {
-          type: '水位超限',
-          level: '三级',
-          date: '2023-03-05',
-          address: '孟建水闸'
-        }
-      ]
+        eventType: '',
+        eventTime: '',
+        eventStatus: '',
+        eventLevel: ''
+      }, tableData: []
     };
   },
   mounted() {
@@ -199,6 +160,10 @@ export default {
         divData.scrollTop = 0;
       }
     }, 200);
+
+    selectEventByCondition(this.formLabelAlign).then(res => {
+      this.tableData = res.data;
+    })
   },
   methods: {
   }

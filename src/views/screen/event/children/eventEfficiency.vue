@@ -26,6 +26,8 @@
   </el-card>
 </template>
 <script>
+import {selectEventTrend} from "@/api/screen.api";
+
 export default {
   name: "eventEfficiency",
   data() {
@@ -43,67 +45,77 @@ export default {
     }
   },
   mounted(){
+    selectEventTrend().then(res => {
+      const data = [];
+      const data2 = [];
+      res.data.map(row => {
+        data.push(row.eventTime);
+        data2.push(row.eventCount);
+      })
+      // 基于准备好的dom，初始化echarts实例
 
-    // 基于准备好的dom，初始化echarts实例
+      const myChart = this.$echarts.init(document.getElementById('eventEff'))
 
-    const myChart = this.$echarts.init(document.getElementById('eventEff'))
+      // 指定图表的配置项和数据
 
-    // 指定图表的配置项和数据
-
-    const option = {
-      title: {
-        text: '事件数量',
-        textStyle: {
-          color: "#FFFFFF"
-        }
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      grid: {
-        bottom: "10%",
-        top: "10%"
-      },
-      legend: {
-        textStyle: {
-          color: "#fff"
-        }
-      },
-      textStyle: {
-        color: "#FFF"
-      },
-
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['2022-03', '2022-06', '2022-09', '2022-12', '2023-03']
-      },
-      yAxis: {
-        type: 'value',
-        splitLine: {
-          show: false
-        },
-        axisLabel: {
-          formatter: '{value}'
-        }
-      },
-      series: [
-        {
-          type: 'line',
-          data: [10, 11, 13, 11, 12],
-          markPoint: {
-            data: [
-              { type: 'max', name: 'Max' },
-              { type: 'min', name: 'Min' }
-            ]
+      const option = {
+        /*title: {
+          text: '事件数量',
+          textStyle: {
+            color: "#FFFFFF",
+            fontSize: 14,
+            fontWeight: 100
           }
-        }
-      ]
-    };
+        },*/
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: "10%",
+          top: "10%"
+        },
+        legend: {
+          textStyle: {
+            color: "#fff"
+          }
+        },
+        textStyle: {
+          color: "#FFF"
+        },
 
-    // 使用刚指定的配置项和数据显示图表。
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: data
+        },
+        yAxis: {
+          type: 'value',
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            formatter: '{value}'
+          }
+        },
+        series: [
+          {
+            type: 'line',
+            data: data2,
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+              ]
+            }
+          }
+        ]
+      };
 
-    myChart.setOption(option)
+      // 使用刚指定的配置项和数据显示图表。
+
+      myChart.setOption(option)
+    })
+
 
   }
 }
