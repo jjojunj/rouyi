@@ -113,11 +113,11 @@ export default {
           this.groups = res.data.list;
           if (this.groups.length > 0) {
             this.groups.forEach((group, _index) => {
-              mpList({groupId: group.groupId}).then(res => {
+              mpList({groupId: group.groupID}).then(res => {
                 res.data.list.map(mp => {
                   this.mpids.push(mp);
                 })
-                if (_index === 0) {
+                if (_index === this.groups.length - 1) {
                   this.onVideoConnect();
                 }
               })
