@@ -133,4 +133,14 @@ export function selectEquipList (data) {
   })
 }
 
+export function selectStaValue (data) {
+  return request({
+    url: '/seawall/inter/selectStaValue',
+    method: 'post',
+    data: data
+  })
+}
+
+
+
 

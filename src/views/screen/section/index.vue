@@ -10,7 +10,7 @@
               <span>{{ data.secName }}</span>
             </div>
             <div class="condition">
-              <el-select v-model="value" size="mini" popper-class="camera-popper" placeholder="请选择">
+              <el-select @change="changeValue" size="mini" popper-class="camera-popper" placeholder="请选择">
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -35,17 +35,14 @@
 
 </template>
 <script>
-import {selectEquipList, selectSectionVal} from "@/api/screen.api";
+import {selectEquipList, selectSectionVal, selectStaValue} from "@/api/screen.api";
 
 export default {
   name: "screen-section",
   props: ["show", "section"],
   data() {
     return {
-      options: [
-        {label: "设备1", value: "xxx"},
-        {label: "设备2", value: "cccc"}
-      ],
+      options: [],
       data: {
         secName: "XX断面",
         list: []
@@ -58,7 +55,7 @@ export default {
         selectEquipList({secId: newVal}).then(res => {
           const options = [];
           res.data.map(row => {
-            options.push({label: row.deviceName, value: row.eid});
+            options.push({label: row.deviceName, value: row.eId});
           });
           this.options = options;
         });
@@ -72,6 +69,11 @@ export default {
   methods: {
     onClose() {
       this.$emit("onHiddenAlter")
+    },
+    changeValue(value) {
+      selectStaValue({equId: value}).then(res => {
+        this.data.list = res.data;
+      })
     }
   }
 }
