@@ -23,8 +23,8 @@
       </el-table-column>
       <el-table-column
         prop="status"
-        min-width="50%"
-        label="设备状态">
+        min-width="30%"
+        label="状态">
         <template slot-scope="scope">
          {{scope.row.status === 'online'?'离线': '在线'}}
         </template>
