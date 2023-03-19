@@ -59,7 +59,18 @@ export default {
 
         const option = {
           title: {
-            text: total + "个",
+            formatter: function (params) {
+              return '{a|'+ params + '个}';
+            },
+            rich: {
+              a: {
+                color: "#fff",
+                lineHeight: 65,
+                fontSize: 20,
+                width: 60,
+                textAlign:"center"
+              },
+            },
             x: "25%",
             y: "center",
             textStyle: {

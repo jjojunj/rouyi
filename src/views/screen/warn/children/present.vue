@@ -144,7 +144,7 @@ export default {
             // show: false,
 
             formatter: function (params) {
-              return '{a|风险现状统计}\n{b|'+ params + '分}';
+              return '{a|评估分数}\n{b|'+ params + '分}';
             },
             color: '#4AEAAE',
             fontSize: 20,

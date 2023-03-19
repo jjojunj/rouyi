@@ -42,6 +42,9 @@
         <el-table-column
           prop="handleTime"
           label="处理时效">
+          <template slot-scope="scope">
+            {{scope.row.handleTime + 'min'}}
+          </template>
         </el-table-column>
       </el-table>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <el-card class="camera-card" style="display: revert;">
+  <el-card class="camera-card">
     <div slot="header" class="camera-card-header">
       <div class="bt-camera">
         <div class="camera-card-header-left">
@@ -19,11 +19,13 @@
       <el-table-column
         prop="deviceName"
         label="设备名称"
+        align="center"
         min-width="50%">
       </el-table-column>
       <el-table-column
         prop="status"
         min-width="30%"
+        align="center"
         label="状态">
         <template slot-scope="scope">
          {{scope.row.status === 'online'?'离线': '在线'}}
@@ -31,6 +33,7 @@
       </el-table-column>
       <el-table-column
         prop="policeTime"
+        align="center"
         label="告警时间">
       </el-table-column>
     </el-table>
