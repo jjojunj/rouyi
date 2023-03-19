@@ -59,26 +59,29 @@ export default {
 
         const option = {
           title: {
-            formatter: function (params) {
-              return '{a|'+ params + '个}';
-            },
-            rich: {
-              a: {
-                color: "#fff",
-                lineHeight: 65,
-                fontSize: 20,
-                width: 60,
-                textAlign:"center"
+            text: "{name|事件总数}\n{val|" + total + "个}",
+            top: "center",
+            left: "22%",
+            textStyle: {
+              rich: {
+                name: {
+                  fontSize: 12,
+                  fontWeight: "normal",
+                  color: "#fff",
+                  padding: [10, 0],
+                  width: 70,
+                  textAlign: "center"
+                },
+                val: {
+                  fontSize: 15,
+                  fontWeight: "bold",
+                  color: "#fff",
+                  padding: [0, 15],
+                  width: 70,
+                  textAlign: "center"
+                },
               },
             },
-            x: "25%",
-            y: "center",
-            textStyle: {
-              fontWeight: "normal",
-              color: "#FFFFFF",
-              fontSize: "20",
-            }
-
           },
           tooltip: {
             trigger: 'item'
