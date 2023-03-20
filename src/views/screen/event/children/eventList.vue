@@ -75,10 +75,10 @@
           ref="tableRef"
           style="width: 100%">
           <el-table-column
-            prop="deviceName"
+            prop="eventType"
             label="事件"
             align="center"
-            min-width="80%">
+            min-width="70%">
           </el-table-column>
           <el-table-column
             prop="eventLevel"
@@ -88,7 +88,7 @@
           </el-table-column>
           <el-table-column
             prop="eventStatus"
-            min-width="20%"
+            min-width="50%"
             align="center"
             label="状态">
           </el-table-column>
