@@ -88,7 +88,7 @@
           </el-table-column>
           <el-table-column
             prop="eventStatus"
-            min-width="50%"
+            min-width="40%"
             align="center"
             label="状态">
           </el-table-column>

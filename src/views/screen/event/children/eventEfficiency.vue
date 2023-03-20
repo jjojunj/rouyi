@@ -94,6 +94,9 @@ export default {
           splitLine: {
             show: false
           },
+          axisLine: {
+            show: true,
+          },
           axisLabel: {
             formatter: '{value}'
           }
