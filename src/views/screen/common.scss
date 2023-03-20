@@ -86,6 +86,8 @@
 
 .sestion-list {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .sestion-list>div{
@@ -115,8 +117,7 @@
   -ms-flex-direction: column;
   flex-direction: column;
   .el-table__cell {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
   }
 
   .el-card__body {
@@ -152,6 +153,7 @@
     display: inline-block;
     float: left;
     width: 50%;
+    text-align: center;
     height: 35px;
     line-height: 35px;
     color: #fff;
@@ -417,6 +419,7 @@
       .title {
         font-size: 20px;
         color: #fff !important;
+        line-height: 40px;
       }
 
       .num {

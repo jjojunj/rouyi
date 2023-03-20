@@ -11,12 +11,12 @@
       </div>
     </div>
     <div style="height: 100%;">
-      <div style="height: 36px;">
+      <div style="height: 46px;">
         <div class="over">未完结事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">{{ notFinished }}</span>起</div>
         <div class="unover">累计已处理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="num">{{ accomplish }}</span>起</div>
       </div>
       <div class="statis-title" style="height: 15px;text-align: right">
-        <span :class="{'statis-title-hover': (type === 1)}" @click="type = 1">事件类型</span>｜<span :class="{'statis-title-hover': (type === 2)}" @click="type = 2">事件级别</span>｜<span :class="{'statis-title-hover': (type === 3)}" @click="type = 3">事件状态</span>
+        <span :class="{'statis-title-hover': (type == 1)}" @click="type = 1">事件类型</span>｜<span :class="{'statis-title-hover': (type == 2)}" @click="type = 2">事件级别</span>｜<span :class="{'statis-title-hover': (type == 3)}" @click="type = 3">事件状态</span>
       </div>
       <div style="height: 80%" id="eventStatis"></div>
     </div>
@@ -50,7 +50,7 @@ export default {
         const datas = [];
         res.data.map(row => {
           total += row.typeNum;
-          datas.push({value: row.typeNum, name: row.typeName + row.typeNum})
+          datas.push({value: row.typeNum, name: row.typeName})
         })
 
         const myChart = this.$echarts.init(document.getElementById('eventStatis'))
@@ -88,11 +88,12 @@ export default {
           },
           legend: {
             orient: 'vertical',
-            right: "0%",
-            top: "20%",
+            left: "57%",
+            top: "center",
             bottom: "1%",
             textStyle: {
-              color: "#fff"
+              color: "#fff",
+              lineHeight: 20
             }
           },
           textStyle: {

@@ -10,7 +10,7 @@
               <span>{{ data.secName }}</span>
             </div>
             <div class="condition">
-              <el-select @change="changeValue" size="mini" popper-class="camera-popper" placeholder="请选择">
+              <el-select @change="changeValue" v-model="equipValue" v size="mini" clearable popper-class="camera-popper" placeholder="请选择设备">
                 <el-option
                   v-for="item in options"
                   :key="item.value"
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="sestion-list">
-        <div v-for="(item) in data.list">{{ item.staName + ":" + item.meaValue}}</div>
+        <div style="width: 50%" v-for="(item) in data.list">{{ item.staName + " : " + item.meaValue}}</div>
       </div>
     </el-card>
   </div>
@@ -43,6 +43,7 @@ export default {
   data() {
     return {
       options: [],
+      equipValue: "",
       data: {
         secName: "XX断面",
         list: []
@@ -70,10 +71,20 @@ export default {
     onClose() {
       this.$emit("onClose")
     },
+    onRefreshSection() {
+      selectSectionVal({secId: this._props.section}).then(res => {
+        this.data = res.data;
+      });
+    },
     changeValue(value) {
-      selectStaValue({equId: value}).then(res => {
-        this.data.list = res.data;
-      })
+      if (value) {
+        selectStaValue({equId: value}).then(res => {
+          this.data.list = res.data;
+        })
+      } else {
+        this.onRefreshSection();
+      }
+
     }
   }
 }

@@ -77,16 +77,25 @@
           <el-table-column
             prop="deviceName"
             label="事件"
-            min-width="60%">
+            align="center"
+            min-width="80%">
           </el-table-column>
           <el-table-column
             prop="eventLevel"
             label="级别"
+            align="center"
             min-width="20%">
+          </el-table-column>
+          <el-table-column
+            prop="eventStatus"
+            min-width="20%"
+            align="center"
+            label="状态">
           </el-table-column>
           <el-table-column
             prop="eventTime"
             min-width="50%"
+            align="center"
             label="时间">
           </el-table-column>
         </el-table>

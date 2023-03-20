@@ -18,10 +18,17 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "analyse",
   mounted(){
-
+    const data = [];
+    const data1 = [85, 80, 83, 84, 90, 93, 88, 92, 90,87, 95, 98];
+    for (let i = 12; i > 0; i--) {
+      const month = moment().subtract(i, "M").month();
+      data.push(month + 1 + "月");
+    }
     // 基于准备好的dom，初始化echarts实例
 
     const myChart = this.$echarts.init(document.getElementById('analyse'))
@@ -55,7 +62,7 @@ export default {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['03-05 00:00', '03-05 01:00', '03-05 02:00', '03-05 03:00', '03-05 04:00','03-05 05:00', '03-05 06:00', '03-05 07:00', '03-05 08:00', '03-05 09:00']
+        data: data
       },
       yAxis: {
         type: 'value',
@@ -69,7 +76,7 @@ export default {
       series: [
         {
           type: 'line',
-          data: [60, 65, 80, 55, 60, 70, 65, 80, 55, 60],
+          data: data1,
           markPoint: {
             data: [
               { type: 'max', name: 'Max' },

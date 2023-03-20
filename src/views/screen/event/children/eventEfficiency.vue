@@ -72,7 +72,7 @@ export default {
         },
         grid: {
           bottom: "10%",
-          top: "10%"
+          top: "20%"
         },
         legend: {
           textStyle: {
@@ -89,6 +89,7 @@ export default {
           data: data
         },
         yAxis: {
+          splitNumber: 1,
           type: 'value',
           splitLine: {
             show: false

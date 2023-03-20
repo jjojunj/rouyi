@@ -20,7 +20,7 @@
         prop="deviceName"
         label="设备名称"
         align="center"
-        min-width="50%">
+        min-width="100%">
       </el-table-column>
       <el-table-column
         prop="status"

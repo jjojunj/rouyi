@@ -21,23 +21,20 @@
         prop="secName"
         label="断面名称"
         align="center"
-        min-width="40%">
+        min-width="60%">
       </el-table-column>
       <el-table-column
         prop="staName"
         label="测点名称"
         align="center"
-        min-width="60%">
+        min-width="100%">
       </el-table-column>
       <el-table-column
         prop="meaValue"
         label="测值"
-        align="center"
-        min-width="40%">
-        <template>
-          <template slot-scope="scope">
-            {{scope.row.meaValue + 'mm'}}
-          </template>
+        align="center">
+        <template slot-scope="scope">
+          {{scope.row.meaValue}}
         </template>
       </el-table-column>
     </el-table>

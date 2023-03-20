@@ -24,19 +24,29 @@
     <div style="height: 100%">
       <el-table
         :data="tableData"
-        height="200"
+        height="100%"
         size="mini"
         class="equipment-table"
         ref="tableRef"
         style="width: 100%">
         <el-table-column
           prop="name"
+          align="center"
+          width="150%"
           label="报告名称">
         </el-table-column>
         <el-table-column
           prop="date"
           label="报告时间"
-          width="120">
+          align="center"
+          width="120%">
+        </el-table-column>
+        <el-table-column
+          align="center"
+          label="操作">
+          <template slot-scope="scope">
+            <span>下载</span>
+          </template>
         </el-table-column>
       </el-table>
     </div>
