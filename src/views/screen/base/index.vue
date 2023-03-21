@@ -10,7 +10,7 @@
     <div class="screen-content-right">
       <camera/>
       <equipment-warn/>
-      <equipment-info/>
+<!--      <equipment-info/>-->
     </div>
   </div>
 
