@@ -1,11 +1,11 @@
 <template>
   <div>
-    <screen-section :show="visible" :section="section" v-show="visible" @onClose="onClose"/>
+<!--    <screen-section :show="visible" :section="section" v-show="visible" @onClose="onClose"/>-->
     <div class="screen-content-bottom">
 
       <div class="container">
         <div class="row">
-          <div class="cell"><div class="title"  @click="onShow">设备类型</div><div><span class="num">{{ data.totalCount }}</span><span>个</span></div></div>
+          <div class="cell"><div class="title" >设备类型</div><div><span class="num">{{ data.totalCount }}</span><span>个</span></div></div>
           <div class="cell" style="margin-left: 5px;"><div class="title">在线率</div><div><span class="num">{{ data.onlineRate }}%</span></div></div>
           <div class="cell"><div class="title">总数</div><div><span class="num">{{ data.sumNum }}</span><span>个</span></div></div>
           <div class="cell" style="margin-left: 5px;"><div class="title">在线</div><div><span class="num">{{ data.onlineNum }}</span><span>个</span></div></div>
@@ -27,11 +27,10 @@
 
 </template>
 <script>
-import ScreenSection from "@/views/screen/section";
-import {selectEquStatistics} from "@/api/screen.api";
+import { selectEquStatistics } from '@/api/screen.api'
+
 export default {
   name: "equipmentCensus",
-  components: {ScreenSection},
   data() {
     return {
       visible: false,
@@ -40,13 +39,13 @@ export default {
     };
   },
   methods: {
-    onClose() {
+    /*onClose() {
       this.visible = false;
     },
     onShow() {
       this.section = 'f5dc718f3f72408d950feae33c906ecb';
       this.visible = true;
-    }
+    }*/
   },
   mounted() {
     selectEquStatistics().then(res => {
