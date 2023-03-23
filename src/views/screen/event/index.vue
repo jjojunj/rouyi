@@ -1,5 +1,5 @@
 <template>
-  <div class="screen-container">
+  <div class="content">
     <event-left/>
     <event-right/>
   </div>
