@@ -98,7 +98,8 @@ export default {
   mounted() {
     userLogin().then(res => {
       this.onOneRefreshToken()
-    })
+    });
+
   },
   methods: {
     handleClose(done) {
@@ -165,6 +166,28 @@ export default {
         player.attachMediaElement(videoDom);
         player.load()
         player.play()
+
+        player.on(flvjs.Events.ERROR, (err, errdet) => {
+          // 参数 err 是一级异常，errdet 是二级异常
+          if (err == flvjs.ErrorTypes.MEDIA_ERROR) {
+            console.log('媒体错误')
+            if(errdet == flvjs.ErrorDetails.MEDIA_FORMAT_UNSUPPORTED) {
+              console.log('媒体格式不支持')
+            }
+          }
+          if (err == flvjs.ErrorTypes.NETWORK_ERROR) {
+            console.log('网络错误')
+            if(errdet == flvjs.ErrorDetails.NETWORK_STATUS_CODE_INVALID) {
+              console.log('http状态码异常')
+            }
+          }
+          if(err == flvjs.ErrorTypes.OTHER_ERROR) {
+            console.log('其他异常：', errdet)
+          }
+        });
+        player.on(flvjs.Events.METADATA_ARRIVED, () => {
+          console.log('视频加载完成')
+        })
         return player;
       }
     },
