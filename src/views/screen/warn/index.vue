@@ -1,5 +1,5 @@
 <template>
-  <div class="screen-container">
+  <div class="content">
 
     <div class="screen-content-right">
       <presend/>
