@@ -163,6 +163,7 @@ export default {
           //   console.log(event, data);
           // 监听出错事件
           console.log("加载失败");
+          this.$message.error('加载视频失败');
         });
       } else {
         this.$message.error("不支持的格式");
@@ -186,7 +187,7 @@ export default {
           this.hlsjs.on(hlsjs.Events.ERROR, (event, data) => {
             //   console.log(event, data);
             // 监听出错事件
-            console.log("加载失败");
+            this.$message.error('加载视频失败');
           });
         } else {
           this.$message.error("不支持的格式");
