@@ -13,32 +13,36 @@
       </div>
       <div style="height: 90%">
         <div class="camera camera1" @click="onClickRightCamare">
-          <video id="video1"
-                 width="100%"
+          <video width="100%"
                  height="99%"
-                 ref="videoElement"
-                 controls autoplay ></video>
+                 id="video1"
+                 :src="src1"
+                 controls
+                 muted ></video>
         </div>
         <div class="camera camera2">
-          <video id="video2"
-                 width="100%"
+          <video width="100%"
                  height="99%"
-                 ref="videoElement"
-                 controls autoplay ></video>
+                 :src="src2"
+                 id="video2"
+                 controls
+                 muted ></video>
         </div>
         <div class="camera camera3">
-          <video id="video3"
-                 width="100%"
+          <video width="100%"
                  height="99%"
-                 ref="videoElement"
-                 controls autoplay ></video>
+                 :src="src3"
+                 id="video3"
+                 controls
+                 muted ></video>
         </div>
         <div class="camera camera4">
-          <video id="video4"
-                 width="100%"
+          <video width="100%"
+                 :src="src4"
                  height="99%"
-                 ref="videoElement"
-                 controls autoplay ></video>
+                 id="video4"
+                 controls
+                 muted ></video>
         </div>
       </div>
     </el-card>
@@ -50,10 +54,10 @@
       custom-class="camera-dialog"
       :before-close="handleClose">
       <div class="left">
-        <video id="video"
-               width="100%"
+        <video width="100%"
                height="100%"
-               ref="videoElement"
+               :src="src"
+               id="video"
                controls autoplay ></video>
       </div>
       <div class="right">
@@ -77,7 +81,7 @@
 
 <script>
 import {groupList, mpList, refreshToken, userLogin, videoConnect} from "@/api/screen.api";
-import flvjs from "flv.js";
+import hlsjs from 'hls.js'
 
 export default {
   name: "camera",
@@ -87,19 +91,18 @@ export default {
       selectCamera: {mpId: ""},
       groups: [],
       mpids: [],
-      player: {},
-      player1: {},
-      player2: {},
-      player3: {},
-      player4: {},
+      src: "",
+      src1: "",
+      src2: "",
+      src3: "",
+      src4: "",
 
     };
   },
   mounted() {
     userLogin().then(res => {
       this.onOneRefreshToken()
-    });
-
+    })
   },
   methods: {
     handleClose(done) {
@@ -137,76 +140,57 @@ export default {
       }
       this.selectCamera = mpids[0];
       for (let i = 0; i < num; i++) {
-        videoConnect({mpId: mpids[i].mpId, videoType: "flv"}).then(res => {
+        videoConnect({mpId: mpids[i].mpId, videoType: "hls"}).then(res => {
           const player = this.createdPlayList("video" + (i+1), res.data.url);
-          if (i === 0) {
-            this.player1 = player;
-          } else if (i === 1) {
-            this.player2 = player;
-          } else if (i === 2) {
-            this.player3 = player;
-          } else if (i === 3) {
-            this.player4 = player;
-          }
         })
       }
 
       this.createdPlay(this.selectCamera);
     },
     createdPlayList(elementId, url) {
-      if (flvjs.isSupported()) {
-        const videoDom = document.getElementById(elementId)
-        const player = flvjs.createPlayer({
-            type: 'flv', // 媒体类型，默认是 flv,
-            isLive: true, // 是否是直播流
-            hasAudio: true, // 是否有音频
-            hanVideo: true, // 是否有视频
-            url: url,
-        })
-        player.attachMediaElement(videoDom);
-        player.load()
-        player.play()
-
-        player.on(flvjs.Events.ERROR, (err, errdet) => {
-          // 参数 err 是一级异常，errdet 是二级异常
-          if (err == flvjs.ErrorTypes.MEDIA_ERROR) {
-            console.log('媒体错误')
-            if(errdet == flvjs.ErrorDetails.MEDIA_FORMAT_UNSUPPORTED) {
-              console.log('媒体格式不支持')
-            }
-          }
-          if (err == flvjs.ErrorTypes.NETWORK_ERROR) {
-            console.log('网络错误')
-            if(errdet == flvjs.ErrorDetails.NETWORK_STATUS_CODE_INVALID) {
-              console.log('http状态码异常')
-            }
-          }
-          if(err == flvjs.ErrorTypes.OTHER_ERROR) {
-            console.log('其他异常：', errdet)
-          }
+      const video = document.getElementById(elementId); //定义挂载点
+      console.log(this.video);
+      if (hlsjs.isSupported()) {
+        this.hlsjs = new hlsjs();
+        this.hlsjs.loadSource(url);//设置播放路径
+        this.hlsjs.attachMedia(video);//解析到video标签上
+        console.log(this.hlsjs);
+        this.hlsjs.on(hlsjs.Events.MANIFEST_PARSED, () => {
+          video.play();
+          console.log("加载成功");
         });
-        player.on(flvjs.Events.METADATA_ARRIVED, () => {
-          console.log('视频加载完成')
-        })
-        return player;
+        this.hlsjs.on(hlsjs.Events.ERROR, (event, data) => {
+          //   console.log(event, data);
+          // 监听出错事件
+          console.log("加载失败");
+        });
+      } else {
+        this.$message.error("不支持的格式");
+        return;
       }
     },
     createdPlay(mp) {
       this.selectCamera = mp;
-      videoConnect({mpId: mp.mpId, videoType: "flv"}).then(res => {
-        if (flvjs.isSupported()) {
-          const videoDom = document.getElementById(mp.mpId)
-          const player = flvjs.createPlayer({
-            type: 'flv', // 媒体类型，默认是 flv,
-            isLive: true, // 是否是直播流
-            hasAudio: true, // 是否有音频
-            hanVideo: true, // 是否有视频
-            url: res.data.url,
-          })
-          player.attachMediaElement(videoDom);
-          player.load()
-          player.play()
-          this.player = player;
+      videoConnect({mpId: mp.mpId, videoType: "hls"}).then(res => {
+        const video = document.getElementById("video"); //定义挂载点
+        console.log(this.video);
+        if (hlsjs.isSupported()) {
+          this.hlsjs = new hlsjs();
+          this.hlsjs.loadSource(res.data.url);//设置播放路径
+          this.hlsjs.attachMedia(video);//解析到video标签上
+          console.log(this.hlsjs);
+          this.hlsjs.on(hlsjs.Events.MANIFEST_PARSED, () => {
+            video.play();
+            console.log("加载成功");
+          });
+          this.hlsjs.on(hlsjs.Events.ERROR, (event, data) => {
+            //   console.log(event, data);
+            // 监听出错事件
+            console.log("加载失败");
+          });
+        } else {
+          this.$message.error("不支持的格式");
+          return;
         }
       })
     },
