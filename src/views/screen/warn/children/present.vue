@@ -12,7 +12,12 @@
       </div>
     </div>
     <div style="height: 100%">
-      <div style="height: 100%" id="present"></div>
+      <div style="height: 90%" id="present"></div>
+      <div style="height: 30%" class="present_bottom">
+        <div><div class="shuzhi">({{"\xa0"}}75 , 100{{"\xa0"}}]</div><div class="pinggu">评估为</div><div class="remark">安全</div></div>
+        <div><div class="shuzhi">({{"\xa0"}}50 ,{{"\xa0\xa0\xa0"}}75{{"\xa0"}}]</div><div class="pinggu">评估为</div><div class="remark">局部异常</div></div>
+        <div><div class="shuzhi">({{"\xa0"}}0{{"\xa0\xa0\xa0"}},{{"\xa0\xa0\xa0"}}50{{"\xa0"}}]</div><div class="pinggu">评估为</div><div class="remark">不安全</div></div>
+      </div>
     </div>
   </el-card>
 </template>
@@ -36,7 +41,7 @@ export default {
 
       backgroundColor: '#fff0',
       title: [{
-        text: '综合风险评估',
+        text: '',
         bottom: '5%',
         x: 'center',
         textStyle: {
@@ -144,7 +149,7 @@ export default {
             // show: false,
 
             formatter: function (params) {
-              return '{a|评估分数}\n{b|'+ params + '分}';
+              return '{a|综合风险评估}\n{b|安全}';
             },
             color: '#4AEAAE',
             fontSize: 20,
@@ -152,7 +157,7 @@ export default {
             rich: {
               a: {
                 color: "#fff",
-                lineHeight: 65,
+                lineHeight: 45,
                 fontSize: 15,
                 fontWeight: 550,
               },

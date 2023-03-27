@@ -1,5 +1,6 @@
 .content {
   width: 100%;
+  height: 100%;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -111,6 +112,45 @@ flex: 1;
 -webkit-box-direction: normal;
 -ms-flex-direction: column;
 flex-direction: column;
+  position: relative;
+  .present_bottom {
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .present_bottom>div{
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid #e7e5e540;
+    .shuzhi {
+      width: 30%;
+      text-align: center;
+    }
+    .pinggu {
+      width: 30%;
+      //border-left: 1px solid #e7e5e540;
+      //border-right: 1px solid #e7e5e540;
+      text-align: center;
+    }
+    .remark {
+      width: 30%;
+      padding-left: 20px;
+    }
+
+  }
 .el-table__cell {
   font-size: 14px;
 }

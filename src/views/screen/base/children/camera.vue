@@ -47,6 +47,7 @@
       :modal="false"
       :visible.sync="dialogVisible"
       width="50%"
+      :opened="createdPlay(selectCamera)"
       custom-class="camera-dialog"
       :before-close="handleClose">
       <div class="left">
@@ -88,7 +89,7 @@ export default {
       groups: [],
       mpids: [],
       datas: [],
-      player: {}
+      player: null
     };
   },
   mounted() {
@@ -99,6 +100,7 @@ export default {
     groupListNew({}).then(res => {
       const datas = res.data;
       this.datas = datas;
+      debugger
       for (let i = 0; i < 4; i++) {
         if (flvjs.isSupported()) {
           const videoDom = document.getElementById("video" + (i+1))
@@ -202,6 +204,13 @@ export default {
     createdPlay(mp) {
       this.selectCamera = mp;
       if (mp&&mp.videoUrl) {
+        if (this.player) {
+          this.player.pause();
+          this.player.unload();
+          this.player.detachMediaElement();
+          this.player.destroy();
+          this.player = null;
+        }
         if (flvjs.isSupported()) {
           const videoDom = document.getElementById("video")
           this.player = flvjs.createPlayer({
