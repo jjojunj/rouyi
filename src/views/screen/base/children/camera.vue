@@ -100,7 +100,6 @@ export default {
     groupListNew({}).then(res => {
       const datas = res.data;
       this.datas = datas;
-      debugger
       for (let i = 0; i < 4; i++) {
         if (flvjs.isSupported()) {
           const videoDom = document.getElementById("video" + (i+1))

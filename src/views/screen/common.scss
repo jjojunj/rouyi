@@ -403,6 +403,12 @@ flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
   align-items: center;
+  .camera-card .el-card__body {
+    overflow-y: auto;
+  }
+  .el-select {
+    margin-right: 10px;
+  }
 }
 .screen-alter {
   position: fixed;
