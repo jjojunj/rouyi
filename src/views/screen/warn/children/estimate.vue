@@ -30,22 +30,22 @@
         ref="tableRef"
         style="width: 100%">
         <el-table-column
-          prop="name"
+          prop="safeName"
           align="center"
-          width="150%"
+          width="220%"
           label="报告名称">
         </el-table-column>
         <el-table-column
-          prop="date"
+          prop="safeTime"
           label="报告时间"
           align="center"
-          width="120%">
+          width="100%">
         </el-table-column>
         <el-table-column
           align="center"
           label="操作">
           <template slot-scope="scope">
-            <span style="cursor: pointer" class="el-icon-download"></span>
+            <span style="cursor: pointer" class="el-icon-download" @click="downloadFile(scope.row.file)"></span>
           </template>
         </el-table-column>
       </el-table>
@@ -59,22 +59,10 @@ export default {
     return {
       value: "全部",
       tableData: [
-        {
-          name: '单昆风险评估报告',
-          date: '2023-02-20',
-        },
-        {
-          name: '双昆风险评估报告',
-          date: '2023-02-20',
-        },
-        {
-          name: '北堤风险评估报告',
-          date: '2023-02-20',
-        },
-        {
-          name: '单昆风险评估报告',
-          date: '2023-01-20',
-        }
+        {safeTime: "2023-03-20", safeName: "海塘安全性态评估报告-断面S22", safeTheme: "断面S22工程实例安全评估分析", safeMake: "各项安全评估评分均判定为\"安全\"", file: "cbad626441e34acfa81355a252350727"},
+        {safeTime: "2023-03-19", safeName: "海塘安全性态评估报告-断面S03", safeTheme: "断面S03工程实例安全评估分析", safeMake: "各项安全评估评分均判定为\"安全\"", file: "73831182e309464c9c4a91e4060d10d4"},
+        {safeTime: "2023-03-18", safeName: "海塘安全性态评估报告-断面S39", safeTheme: "断面S39工程实例安全评估分析", safeMake: "各项安全评估评分均判定为\"安全\"", file: "fd78a0277e0848f9a0d0d431a97c1924"},
+        {safeTime: "2023-03-17", safeName: "海塘安全性态评估报告-断面S23", safeTheme: "断面S23工程实例安全评估分析", safeMake: "各项安全评估评分均判定为\"安全\"", file: "01396492e789487d977dd95156be9f8b"},
       ]
     }
   },
@@ -89,6 +77,9 @@ export default {
     }, 200);
   },
   methods: {
+    downloadFile(name) {
+      window.location.href =  process.env.VUE_APP_BASE_API + "/seawall/event/download?fileId=" + name;
+    },
   }
 }
 </script>

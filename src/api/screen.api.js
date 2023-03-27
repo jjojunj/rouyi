@@ -216,3 +216,16 @@ export function groupListNew (data) {
     data: data
   })
 }
+
+export const selectFraction = () => {
+  return request({
+    url: '/seawall/safe/selectFraction',
+    method: 'post',
+  })
+}
+export const selectRiskTrend = () => {
+  return request({
+    url: '/seawall/safe/selectRiskTrend',
+    method: 'post',
+  })
+}

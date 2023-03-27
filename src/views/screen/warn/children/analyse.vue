@@ -19,78 +19,89 @@
 
 <script>
 import moment from "moment";
+import {selectRiskTrend} from "@/api/screen.api";
 
 export default {
   name: "analyse",
   mounted(){
-    const data = [];
-    const data1 = [85, 80, 83, 84, 90, 93, 88, 92, 90,87, 95, 98];
-    for (let i = 12; i > 0; i--) {
-      const month = moment().subtract(i, "M").month();
-      data.push(month + 1 + "月");
-    }
-    // 基于准备好的dom，初始化echarts实例
+    selectRiskTrend().then(res => {
+      const data = [], data2 = [];
+      res.data.map(row => {
+        data.push(row.safeTime);
+        data2.push(row.fraction);
+      })
+      this.initEchart(data, data2)
+    })
 
-    const myChart = this.$echarts.init(document.getElementById('analyse'))
+  },
+  methods: {
+    initEchart: function(data, data2) {
+      const myChart = this.$echarts.init(document.getElementById('analyse'))
 
-    // 指定图表的配置项和数据
+      // 指定图表的配置项和数据
 
-    const option = {
-      title: {
-        text: '分数',
-        textStyle: {
-          color: "#FFFFFF",
-          fontWeight: 100,
-          fontSize: 15
-        }
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
+      const option = {
+        title: {
+          text: '安全评估趋势',
+          textStyle: {
+            color: "#fff",
+            fontSize: 25,
+          },
+          x: "7%",
+          y: 15
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: 30,
+          top: 80,
+          left: "8%"
+        },
+        legend: {
+          textStyle: {
+            color: "#fff"
+          }
+        },
         textStyle: {
           color: "#fff"
-        }
-      },
-      grid: {
-        bottom: "20%",
-        top: "20%"
-      },
-      textStyle: {
-        color: "#FFF"
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: data
-      },
-      yAxis: {
-        type: 'value',
-        splitLine: {
-          show: false
         },
-        axisLabel: {
-          formatter: '{value}'
-        }
-      },
-      series: [
-        {
-          type: 'line',
-          data: data1,
-          markPoint: {
-            data: [
-              { type: 'max', name: 'Max' },
-              { type: 'min', name: 'Min' }
-            ]
+
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: data
+        },
+        yAxis: {
+          type: 'value',
+          splitLine: {
+            show: true
+          },
+          axisLabel: {
+            formatter: '{value}'
           }
-        }
-      ]
-    };
+        },
+        series: [
+          {
+            type: 'line',
+            data: data2,
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' }
+              ],
+              style: {
+                color: "#fff"
+              }
+            }
+          }
+        ]
+      };
 
-    // 使用刚指定的配置项和数据显示图表。
+      // 使用刚指定的配置项和数据显示图表。
 
-    myChart.setOption(option)
-
+      myChart.setOption(option)
+    },
   }
 }
 </script>

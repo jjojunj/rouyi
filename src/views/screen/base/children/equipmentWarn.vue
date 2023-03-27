@@ -28,7 +28,7 @@
         align="center"
         label="状态">
         <template slot-scope="scope">
-         {{scope.row.status === 'online'?'离线': '在线'}}
+         {{scope.row.status === 'online'?'在线': '离线'}}
         </template>
       </el-table-column>
       <el-table-column
@@ -61,7 +61,7 @@ export default {
       }
     }, 200);
 
-    selectEquEmergency({}).then(res => {
+    selectEquEmergency({status: "offline"}).then(res => {
       this.tableData = res.data;
     })
   },

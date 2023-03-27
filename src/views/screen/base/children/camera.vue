@@ -47,14 +47,14 @@
       :modal="false"
       :visible.sync="dialogVisible"
       width="50%"
-      :opened="createdPlay(selectCamera)"
+      @opened="opendCreatePlay(selectCamera)"
       custom-class="camera-dialog"
       :before-close="handleClose">
       <div class="left">
         <video id="video"
                width="100%"
                height="100%"
-               ref="videoElement"
+               ref="videoRef"
                controls autoplay ></video>
       </div>
       <div class="right">
@@ -201,6 +201,9 @@ export default {
         return player;
       }
     },*/
+    opendCreatePlay(mp) {
+      this.$nextTick(this.createdPlay(mp));
+    },
     createdPlay(mp) {
       this.selectCamera = mp;
       if (mp&&mp.videoUrl) {
@@ -212,7 +215,7 @@ export default {
           this.player = null;
         }
         if (flvjs.isSupported()) {
-          const videoDom = document.getElementById("video")
+          const videoDom = this.$refs.videoRef;
           this.player = flvjs.createPlayer({
             type: 'flv', // 媒体类型，默认是 flv,
             isLive: true, // 是否是直播流
