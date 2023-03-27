@@ -35,14 +35,14 @@ module.exports = {
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:8081`,
+        target: `http://101.43.109.87:30909/`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       },
       [process.env.VUE_APP_CAMERA_API]: {
-        target: `http://192.168.31.212:30909`,
+        target: `http://101.43.109.87:30909/`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_CAMERA_API]: ''

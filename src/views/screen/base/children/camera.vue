@@ -12,28 +12,28 @@
         </div>
       </div>
       <div style="height: 90%">
-        <div class="camera camera1" @click="onClickRightCamare">
+        <div class="camera camera1" @click="onClickRightCamare(datas[0])">
           <video id="video1"
                  width="100%"
                  height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
-        <div class="camera camera2">
+        <div class="camera camera2" @click="onClickRightCamare(datas[1])">
           <video id="video2"
                  width="100%"
                  height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
-        <div class="camera camera3">
+        <div class="camera camera3" @click="onClickRightCamare(datas[2])">
           <video id="video3"
                  width="100%"
                  height="99%"
                  ref="videoElement"
                  controls autoplay ></video>
         </div>
-        <div class="camera camera4">
+        <div class="camera camera4" @click="onClickRightCamare(datas[3])">
           <video id="video4"
                  width="100%"
                  height="99%"
@@ -60,7 +60,7 @@
         <dl>
           <dt>视频选择</dt>
           <div style="overflow: auto">
-            <dd v-for="(mp,index) in mpids" :id="mp.mpId" @click="createdPlay(mp)" :class="{'hover': (mp === selectCamera)}">
+            <dd v-for="(mp,index) in datas" :id="mp.mpId" @click="createdPlay(mp)" :class="{'hover': (mp === selectCamera)}">
               {{index+1}}.{{mp.mpName}}
             </dd>
           </div>
@@ -76,8 +76,8 @@
 </template>
 
 <script>
-import {groupList, mpList, refreshToken, userLogin, videoConnect} from "@/api/screen.api";
-import flvjs from "flv.js";
+import { groupListNew } from '@/api/screen.api'
+import flvjs from 'flv.js'
 
 export default {
   name: "camera",
@@ -87,28 +87,44 @@ export default {
       selectCamera: {mpId: ""},
       groups: [],
       mpids: [],
-      player: {},
-      player1: {},
-      player2: {},
-      player3: {},
-      player4: {},
-
+      datas: []
     };
   },
   mounted() {
-    userLogin().then(res => {
+    /*userLogin().then(res => {
       this.onOneRefreshToken()
-    });
+    });*/
+
+    groupListNew({}).then(res => {
+      const datas = res.data;
+      this.datas = datas;
+      for (let i = 0; i < 4; i++) {
+        if (flvjs.isSupported()) {
+          const videoDom = document.getElementById("video" + (i+1))
+          const player = flvjs.createPlayer({
+            type: 'flv', // 媒体类型，默认是 flv,
+            isLive: true, // 是否是直播流
+            hasAudio: false, // 是否有音频
+            hanVideo: true, // 是否有视频
+            url: datas[i].videoUrl,
+          })
+          player.attachMediaElement(videoDom);
+          player.load()
+          player.play()
+        }
+      }
+    })
 
   },
   methods: {
     handleClose(done) {
       done();
     },
-    onClickRightCamare() {
-      this.dialogVisible = true
+    onClickRightCamare(data) {
+      this.dialogVisible = true;
+      this.selectCamera = data;
     },
-    onOneRefreshToken () {
+    /*onOneRefreshToken () {
       refreshToken().then(res => {
         groupList().then(res => {
           this.groups = res.data.list;
@@ -181,33 +197,31 @@ export default {
         })
         return player;
       }
-    },
+    },*/
     createdPlay(mp) {
       this.selectCamera = mp;
-      if (mp&&mp.mpId) {
-        videoConnect({mpId: mp.mpId, videoType: "flv"}).then(res => {
-          if (flvjs.isSupported()) {
-            const videoDom = document.getElementById("video")
-            const player = flvjs.createPlayer({
-              type: 'flv', // 媒体类型，默认是 flv,
-              isLive: true, // 是否是直播流
-              hasAudio: false, // 是否有音频
-              hanVideo: true, // 是否有视频
-              url: res.data.url,
-            })
-            player.attachMediaElement(videoDom);
-            player.load()
-            player.play()
-          }
-        })
+      if (mp&&mp.videoUrl) {
+        if (flvjs.isSupported()) {
+          const videoDom = document.getElementById("video")
+          const player = flvjs.createPlayer({
+            type: 'flv', // 媒体类型，默认是 flv,
+            isLive: true, // 是否是直播流
+            hasAudio: false, // 是否有音频
+            hanVideo: true, // 是否有视频
+            url: mp.videoUrl,
+          })
+          player.attachMediaElement(videoDom);
+          player.load()
+          player.play()
+        }
       }
 
     },
-    onRefreshToken () {
+    /*onRefreshToken () {
       refreshToken().then(res => {
         setTimeout(this.onRefreshToken, 1000*60)
       })
-    }
+    }*/
   }
 }
 </script>

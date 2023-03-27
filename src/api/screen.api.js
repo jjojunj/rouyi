@@ -208,3 +208,11 @@ export function dictType (dictType) {
     method: 'post',
   })
 }
+
+export function groupListNew (data) {
+  return request({
+    url: '/seawall/video/groupListNew',
+    method: 'post',
+    data: data
+  })
+}
