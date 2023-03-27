@@ -67,6 +67,19 @@ export default {
       }
     }
   },
+  mounted() {
+    selectEquipList({secId: this._props.section}).then(res => {
+      const options = [];
+      res.data.map(row => {
+        options.push({label: row.deviceName, value: row.eId});
+      });
+      this.options = options;
+    });
+
+    selectSectionVal({secId: this._props.section}).then(res => {
+      this.data = res.data;
+    });
+  },
   methods: {
     onClose() {
       this.$emit("onClose")
