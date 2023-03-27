@@ -45,7 +45,7 @@
           align="center"
           label="操作">
           <template slot-scope="scope">
-            <span>下载</span>
+            <span style="cursor: pointer" class="el-icon-download"></span>
           </template>
         </el-table-column>
       </el-table>
