@@ -87,7 +87,8 @@ export default {
       selectCamera: {mpId: ""},
       groups: [],
       mpids: [],
-      datas: []
+      datas: [],
+      player: {}
     };
   },
   mounted() {
@@ -203,16 +204,16 @@ export default {
       if (mp&&mp.videoUrl) {
         if (flvjs.isSupported()) {
           const videoDom = document.getElementById("video")
-          const player = flvjs.createPlayer({
+          this.player = flvjs.createPlayer({
             type: 'flv', // 媒体类型，默认是 flv,
             isLive: true, // 是否是直播流
             hasAudio: false, // 是否有音频
             hanVideo: true, // 是否有视频
             url: mp.videoUrl,
           })
-          player.attachMediaElement(videoDom);
-          player.load()
-          player.play()
+          this.player.attachMediaElement(videoDom);
+          this.player.load()
+          this.player.play()
         }
       }
 
