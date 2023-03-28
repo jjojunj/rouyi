@@ -42,7 +42,6 @@ export default {
 
       const option = {
         title: {
-          text: '安全评估趋势',
           textStyle: {
             color: "#fff",
             fontSize: 25,
@@ -55,7 +54,7 @@ export default {
         },
         grid: {
           bottom: 30,
-          top: 80,
+          top: 50,
           left: "12%"
         },
         legend: {
