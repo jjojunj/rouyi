@@ -24,7 +24,7 @@
     <div style="height: 100%">
       <el-table
         :data="tableData"
-        height="100%"
+        height="90%"
         size="mini"
         class="equipment-table"
         ref="tableRef"
