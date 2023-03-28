@@ -1,5 +1,6 @@
 .content {
   width: 100%;
+  height: 100%;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -153,9 +154,21 @@ flex-direction: column;
     }
 
   }
-.el-table__cell {
-  font-size: 14px;
-}
+  @media (max-width: 1919px) {
+    .el-table__cell {
+      font-size: 10px !important;
+    }
+  }
+
+  @media (min-width: 1930px) {
+    .el-table__cell {
+      font-size: 1.8rem !important;
+    }
+  }
+
+  .el-table__cell {
+    font-size: 18px;
+  }
 /* 所有控件 */
   video::-webkit-media-controls-enclosure {
     display: none;
