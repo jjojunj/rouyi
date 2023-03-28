@@ -35,13 +35,13 @@
           prop="eventType"
           label="事件"
           align="center"
-          min-width="160%">
+          min-width="120%">
         </el-table-column>
         <el-table-column
           prop="respondTime"
           label="响应时间"
           align="center"
-          min-width="70%">
+          min-width="90%">
           <template slot-scope="scope">
             {{scope.row.respondTime + '  min'}}
           </template>

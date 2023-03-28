@@ -80,13 +80,13 @@
             prop="eventType"
             label="事件"
             align="center"
-            min-width="70%">
+            min-width="60%">
           </el-table-column>
           <el-table-column
             prop="eventLevel"
             label="级别"
             align="center"
-            min-width="20%">
+            min-width="30%">
           </el-table-column>
           <el-table-column
             prop="eventStatus"
