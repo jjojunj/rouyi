@@ -94,6 +94,24 @@ padding: 10px;
 color: #fff;
 }
 
+@media (max-width: 1919px) {
+  .cell {
+     font-size: 1.8rem;
+     }
+  .wrap-table-header {
+     font-size: 1.8rem;
+     height: 4.6rem;
+     .cell {
+       font-size: 1.6rem;
+       }
+     }
+
+  .el-table__body {
+     .el-table__row {
+      height: 4.1rem;
+       }
+     }
+  }
 .camera-card {
 margin-top: 10px;
 margin-bottom: 10px;
@@ -154,21 +172,7 @@ flex-direction: column;
     }
 
   }
-  @media (max-width: 1919px) {
-    .el-table__cell {
-      font-size: 10px !important;
-    }
-  }
 
-  @media (min-width: 1930px) {
-    .el-table__cell {
-      font-size: 1.8rem !important;
-    }
-  }
-
-  .el-table__cell {
-    font-size: 18px;
-  }
 /* 所有控件 */
   video::-webkit-media-controls-enclosure {
     display: none;
