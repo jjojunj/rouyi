@@ -32,7 +32,7 @@
         <el-table-column
           prop="safeName"
           align="center"
-          width="220%"
+          width="200%"
           label="报告名称">
         </el-table-column>
         <el-table-column

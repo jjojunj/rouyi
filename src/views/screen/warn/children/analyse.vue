@@ -56,7 +56,7 @@ export default {
         grid: {
           bottom: 30,
           top: 80,
-          left: "8%"
+          left: "12%"
         },
         legend: {
           textStyle: {
