@@ -71,6 +71,8 @@
           :data="tableData"
           height="85%"
           size="mini"
+          @cell-mouse-enter="mEnter"
+          @cell-mouse-leave="mLeave"
           class="equipment-table event-table"
           ref="tableRef"
           style="width: 100%">
@@ -111,6 +113,7 @@ export default {
   name: "eventList",
   data() {
     return {
+      timer: null,
       status: [],
       levels: [],
       types: [],
@@ -146,14 +149,7 @@ export default {
       })
       this.status = status;
     })
-    const table = this.$refs.tableRef;
-    const divData = table.bodyWrapper;
-    setInterval(() => {
-      divData.scrollTop += 2;
-      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
-        divData.scrollTop = 0;
-      }
-    }, 200);
+    this.timer = setInterval(this.scroll, 200);
 
     this.onSearch();
   },
@@ -162,6 +158,20 @@ export default {
       selectEventByCondition(this.formLabelAlign).then(res => {
         this.tableData = res.data;
       })
+    },
+    scroll() {
+      const table = this.$refs.tableRef;
+      const divData = table.bodyWrapper;
+      divData.scrollTop += 2;
+      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
+        divData.scrollTop = 0;
+      }
+    },
+    mEnter() {
+      clearInterval(this.timer)
+    },
+    mLeave() {
+      this.timer = setInterval(this.scroll, 200)
     }
   }
 }

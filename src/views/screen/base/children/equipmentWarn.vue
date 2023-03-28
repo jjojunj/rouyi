@@ -15,6 +15,8 @@
       height="80%"
       class="equipment-table"
       ref="tableRef"
+      @cell-mouse-enter="mEnter"
+      @cell-mouse-leave="mLeave"
       style="width: 100%">
       <el-table-column
         prop="deviceName"
@@ -42,28 +44,38 @@
 </template>
 
 <script>
-import {selectEquEmergency} from "@/api/screen.api";
+import { selectEquEmergency } from '@/api/screen.api'
 
 export default {
   name: "equipmentWarn",
   data() {
     return {
+      timer: null,
       tableData: []
     }
   },
   mounted() {
-    const table = this.$refs.tableRef;
-    const divData = table.bodyWrapper;
-    setInterval(() => {
-      divData.scrollTop += 2;
-      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
-        divData.scrollTop = 0;
-      }
-    }, 200);
+    this.timer = setInterval(this.scroll, 200)
 
     selectEquEmergency({status: "offline"}).then(res => {
       this.tableData = res.data;
     })
   },
+  methods: {
+    scroll() {
+      const table = this.$refs.tableRef;
+      const divData = table.bodyWrapper;
+      divData.scrollTop += 2;
+      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
+        divData.scrollTop = 0;
+      }
+    },
+    mEnter() {
+      clearInterval(this.timer)
+    },
+    mLeave() {
+      this.timer = setInterval(this.scroll, 200)
+    }
+  }
 }
 </script>

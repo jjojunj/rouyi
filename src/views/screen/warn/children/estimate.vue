@@ -28,6 +28,8 @@
         size="mini"
         class="equipment-table"
         ref="tableRef"
+        @cell-mouse-enter="mEnter"
+        @cell-mouse-leave="mLeave"
         style="width: 100%">
         <el-table-column
           prop="safeName"
@@ -57,6 +59,7 @@ export default {
   name: "estimate",
   data() {
     return {
+      timer: null,
       value: "全部",
       tableData: [
         {safeTime: "2023-03-20", safeName: "海塘安全性态评估报告-断面S22", safeTheme: "断面S22工程实例安全评估分析", safeMake: "各项安全评估评分均判定为\"安全\"", file: "cbad626441e34acfa81355a252350727"},
@@ -67,19 +70,26 @@ export default {
     }
   },
   mounted() {
-    const table = this.$refs.tableRef;
-    const divData = table.bodyWrapper;
-    setInterval(() => {
+    this.timer = setInterval(this.scroll, 200);
+  },
+  methods: {
+    scroll() {
+      const table = this.$refs.tableRef;
+      const divData = table.bodyWrapper;
       divData.scrollTop += 2;
       if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
         divData.scrollTop = 0;
       }
-    }, 200);
-  },
-  methods: {
+    },
     downloadFile(name) {
       window.location.href =  process.env.VUE_APP_CAMERA_API + "/seawall/event/download?fileId=" + name;
     },
+    mEnter() {
+      clearInterval(this.timer)
+    },
+    mLeave() {
+      this.timer = setInterval(this.scroll, 200)
+    }
   }
 }
 </script>

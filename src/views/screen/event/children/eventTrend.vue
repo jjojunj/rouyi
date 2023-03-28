@@ -27,6 +27,8 @@
         size="mini"
         class="equipment-table"
         ref="tableRef"
+        @cell-mouse-enter="mEnter"
+        @cell-mouse-leave="mLeave"
         height="90%"
         style="width: 100%">
         <el-table-column
@@ -63,6 +65,7 @@ export default {
   name: "eventTrend",
   data() {
     return {
+      timer: null,
       value: "全部",
       options: [
         {
@@ -77,20 +80,30 @@ export default {
     }
   },
   mounted() {
-    const table = this.$refs.tableRef;
-    const divData = table.bodyWrapper;
-    setInterval(() => {
-      divData.scrollTop += 2;
-      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
-        divData.scrollTop = 0;
-      }
-    }, 200);
+    this.timer = setInterval(this.scroll, 200);
     selectEventAnalyse().then(res => {
       this.tableData = res.data;
     })
 
   },
   methods: {
+    scroll() {
+      const table = this.$refs.tableRef;
+      const divData = table.bodyWrapper;
+      divData.scrollTop += 2;
+      if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
+        divData.scrollTop = 0;
+      }
+    },
+    downloadFile(name) {
+      window.location.href =  process.env.VUE_APP_CAMERA_API + "/seawall/event/download?fileId=" + name;
+    },
+    mEnter() {
+      clearInterval(this.timer)
+    },
+    mLeave() {
+      this.timer = setInterval(this.scroll, 200)
+    }
   }
 }
 </script>
