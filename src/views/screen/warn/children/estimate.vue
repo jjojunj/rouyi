@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     downloadFile(name) {
-      window.location.href =  process.env.VUE_APP_BASE_API + "/seawall/event/download?fileId=" + name;
+      window.location.href =  process.env.VUE_APP_CAMERA_API + "/seawall/event/download?fileId=" + name;
     },
   }
 }
