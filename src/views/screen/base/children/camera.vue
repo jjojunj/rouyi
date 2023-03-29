@@ -108,7 +108,7 @@ export default {
             isLive: true, // 是否是直播流
             hasAudio: false, // 是否有音频
             hanVideo: true, // 是否有视频
-            url: datas[i].videoUrl,
+            url: datas[i].videoUrl.replaceAll('http://172.20.56.241:8896', ''),
           })
           player.attachMediaElement(videoDom);
           player.load()
@@ -220,7 +220,7 @@ export default {
             isLive: true, // 是否是直播流
             hasAudio: false, // 是否有音频
             hanVideo: true, // 是否有视频
-            url: mp.videoUrl,
+            url: mp.videoUrl.replaceAll('http://172.20.56.241:8896', ''),
           })
           this.player.attachMediaElement(videoDom);
           this.player.load()
