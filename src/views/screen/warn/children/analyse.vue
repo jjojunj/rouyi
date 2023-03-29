@@ -54,7 +54,7 @@ export default {
           trigger: 'axis'
         },
         grid: {
-          bottom: 40,
+          bottom: 20,
           top: 80,
           left: "12%"
         },
