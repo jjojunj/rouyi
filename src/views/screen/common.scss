@@ -94,36 +94,7 @@ padding: 10px;
 color: #fff;
 }
 
-@media (max-width: 1919px) {
-  .cell {
-     font-size: 1.8rem;
-     }
-  .wrap-table-header {
-     font-size: 1.8rem;
-     height: 4.6rem;
-     .cell {
-       font-size: 1.6rem;
-       }
-     }
 
-  .el-table__body {
-     .el-table__row {
-      height: 4.1rem;
-       }
-     }
-  }
-  .cell {
-      font-size: 18px;
-      color: #fff;
-      font-family: "DAB";
-      padding-left: 2px;
-      padding-right: 2px;
-  }
-  .el-table__header .cell {
-    font-size: 16px;
-    padding-left: 2px;
-    padding-right: 2px;
-  }
 .camera-card {
 margin-top: 10px;
 margin-bottom: 10px;
@@ -143,6 +114,36 @@ flex: 1;
 -ms-flex-direction: column;
 flex-direction: column;
   position: relative;
+  @media (max-width: 1919px) {
+    .cell {
+      font-size: 1.8rem;
+    }
+    .wrap-table-header {
+      font-size: 1.8rem;
+      height: 4.6rem;
+      .cell {
+        font-size: 1.6rem;
+      }
+    }
+
+    .el-table__body {
+      .el-table__row {
+        height: 4.1rem;
+      }
+    }
+  }
+  .cell {
+    font-size: 18px;
+    color: #fff;
+    font-family: "DAB";
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .el-table__header .cell {
+    font-size: 16px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
   .el-table__empty-text {
     color: #fff;
   }
