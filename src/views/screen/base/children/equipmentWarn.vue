@@ -26,7 +26,7 @@
       </el-table-column>
       <el-table-column
         prop="status"
-        min-width="30%"
+        min-width="50%"
         align="center"
         label="状态">
         <template slot-scope="scope">
