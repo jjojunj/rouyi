@@ -17,10 +17,12 @@
       ref="tableRef"
       @cell-mouse-enter="mEnter"
       @cell-mouse-leave="mLeave"
+      tooltip-effect="dark"
       style="width: 100%">
       <el-table-column
         prop="deviceName"
         label="设备名称"
+        :show-overflow-tooltip="true"
         align="center"
         min-width="100%">
       </el-table-column>
@@ -28,6 +30,7 @@
         prop="status"
         min-width="50%"
         align="center"
+        :show-overflow-tooltip="true"
         label="状态">
         <template slot-scope="scope">
          {{scope.row.status === 'online'?'在线': '离线'}}
@@ -36,6 +39,7 @@
       <el-table-column
         prop="policeTime"
         align="center"
+        :show-overflow-tooltip="true"
         label="告警时间">
       </el-table-column>
     </el-table>

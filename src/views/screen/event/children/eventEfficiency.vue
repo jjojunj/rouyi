@@ -59,14 +59,14 @@ export default {
       // 指定图表的配置项和数据
 
       const option = {
-        /*title: {
+        title: {
           text: '事件数量',
           textStyle: {
             color: "#FFFFFF",
             fontSize: 14,
             fontWeight: 100
           }
-        },*/
+        },
         tooltip: {
           trigger: 'axis'
         },

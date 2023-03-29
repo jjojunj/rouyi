@@ -5,7 +5,7 @@
         <div class="camera-card-header-left">
           <div>
             <img data-v-24cea621="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgBvZLJDoJADIZbwJXN5Yl8Po8mJj6ad0+amLg7ojMO9CcRAp4m9PJNKJ1+6ZS3yhiyoTIqIjPC5wfUQm8gXITM1BAeOYrgpuRwuAnvb+EVPL+Ew+j/Re6Mjui8f8CgZnLC7OI+dWR0QMfdHSZZlRdwNqaOjPaqanSpmVxBAs1rs8qpyUtyMgeJW6NPKIdeKhxho40ufxBG87LEn4iJLxWujbgtYdR6mVNzEMMkhUkilUKDvLsZtSU09yYwwetw2mRi81E3RnY/pjhhJkH5ShHMChryw26MbMdZDrvBMQxjGIW/JvbDyKnRFy7/SRGLlf+8AAAAAElFTkSuQmCC" class="camera-card-header-icon">
-            <span>处置效率分析</span>
+            <span>风险评估报告</span>
           </div>
 
           <!--          <div class="condition">
@@ -26,6 +26,7 @@
         :data="tableData"
         height="90%"
         size="mini"
+        tooltip-effect="dark"
         class="equipment-table"
         ref="tableRef"
         @cell-mouse-enter="mEnter"
@@ -34,12 +35,14 @@
         <el-table-column
           prop="safeName"
           align="center"
+          :show-overflow-tooltip="true"
           width="200%"
           label="报告名称">
         </el-table-column>
         <el-table-column
           prop="safeTime"
           label="报告时间"
+          :show-overflow-tooltip="true"
           align="center"
           width="100%">
         </el-table-column>

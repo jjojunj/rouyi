@@ -42,9 +42,10 @@ export default {
 
       const option = {
         title: {
+          text: "评估分数",
           textStyle: {
             color: "#fff",
-            fontSize: 25,
+            fontSize: 15,
           },
           x: "7%",
           y: 15
@@ -53,8 +54,8 @@ export default {
           trigger: 'axis'
         },
         grid: {
-          bottom: 30,
-          top: 50,
+          bottom: 40,
+          top: 80,
           left: "12%"
         },
         legend: {

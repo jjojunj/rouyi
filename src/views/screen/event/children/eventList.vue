@@ -70,6 +70,7 @@
         <el-table
           :data="tableData"
           height="85%"
+          tooltip-effect="dark"
           size="mini"
           @cell-mouse-enter="mEnter"
           @cell-mouse-leave="mLeave"
@@ -80,22 +81,26 @@
             prop="eventType"
             label="事件"
             align="center"
+            :show-overflow-tooltip="true"
             min-width="60%">
           </el-table-column>
           <el-table-column
             prop="eventLevel"
             label="级别"
             align="center"
+            :show-overflow-tooltip="true"
             min-width="30%">
           </el-table-column>
           <el-table-column
             prop="eventStatus"
             min-width="40%"
             align="center"
+            :show-overflow-tooltip="true"
             label="状态">
           </el-table-column>
           <el-table-column
             prop="eventTime"
+            :show-overflow-tooltip="true"
             min-width="50%"
             align="center"
             label="时间">
