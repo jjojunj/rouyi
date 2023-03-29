@@ -27,6 +27,7 @@
         size="mini"
         class="equipment-table"
         ref="tableRef"
+        tooltip-effect="dark"
         @cell-mouse-enter="mEnter"
         @cell-mouse-leave="mLeave"
         height="90%"
@@ -35,12 +36,14 @@
           prop="eventType"
           label="事件"
           align="center"
+          :show-overflow-tooltip="true"
           min-width="120%">
         </el-table-column>
         <el-table-column
           prop="respondTime"
           label="响应时间"
           align="center"
+          :show-overflow-tooltip="true"
           min-width="90%">
           <template slot-scope="scope">
             {{scope.row.respondTime + '  min'}}
